@@ -1,0 +1,61 @@
+<div class="flex justify-between items-center px-6 sm:px-16 py-5 bg-white border-b border-gray-200 shadow-sm font-[Poppins]">
+  <!-- Logo Left -->
+  <div class="text-2xl sm:text-3xl font-extrabold text-red-700 tracking-wide">
+    PORTFOLIO
+  </div>
+
+  <!-- Menu Center -->
+  <div class="hidden md:flex gap-8 lg:gap-16 text-[18px] lg:text-[20px]">
+    <a 
+      (click)="goHome()"
+      class="relative font-medium text-gray-700 cursor-pointer transition-colors duration-300
+             hover:text-red-700 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-red-700 
+             after:transition-all after:duration-300 hover:after:w-full">
+      Home
+    </a>
+
+    <a 
+      (click)="goProject()"
+      class="relative font-medium text-gray-700 cursor-pointer transition-colors duration-300
+             hover:text-red-700 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-red-700 
+             after:transition-all after:duration-300 hover:after:w-full">
+      Projects
+    </a>
+
+    <a
+      (click)="goExperience()"
+      class="relative font-medium text-gray-700 cursor-pointer transition-colors duration-300
+             hover:text-red-700 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-red-700 
+             after:transition-all after:duration-300 hover:after:w-full">
+      Experience
+    </a>
+
+    <a 
+      (click)="goCertificate()"
+      class="relative font-medium text-gray-700 cursor-pointer transition-colors duration-300
+             hover:text-red-700 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-red-700 
+             after:transition-all after:duration-300 hover:after:w-full">
+      Certificates
+    </a>
+  </div>
+
+  <!-- Logo Right -->
+  <div class="hidden md:block text-2xl sm:text-3xl italic font-light text-amber-950 tracking-wide">
+    Developer
+  </div>
+
+  <!-- Mobile Hamburger -->
+  <div class="md:hidden flex items-center">
+    <button class="text-gray-700 text-3xl focus:outline-none" (click)="toggleMenu()">
+      ☰
+    </button>
+  </div>
+</div>
+
+<!-- Mobile Menu Dropdown -->
+<div *ngIf="isMenuOpen" class="md:hidden flex flex-col gap-4 px-6 py-4 bg-white border-t border-gray-200 shadow-sm text-[18px]">
+  <a (click)="goHome()" class="font-medium text-gray-700 hover:text-red-700">Home</a>
+  <a (click)="goProject()" class="font-medium text-gray-700 hover:text-red-700">Projects</a>
+  <a class="font-medium text-gray-700 hover:text-red-700">Experience</a>
+  <a (click)="goCertificate()" class="font-medium text-gray-700 hover:text-red-700">Certificates</a>
+</div>
