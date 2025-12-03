@@ -1,0 +1,103 @@
+<app-navbar></app-navbar>
+
+<div class="bg-[#F7EBE4] font-[Poppins] min-h-screen py-10">
+
+    <!-- Title Section -->
+    <div class="text-center mb-6">
+        <h1 class="font-bold text-[36px] text-[#8A5252]">GIỎ HÀNG CỦA BẠN</h1>
+        <p class="text-[18px] text-[#8A5252]">Có n sản phẩm trong giỏ hàng</p>
+    </div>
+    <!-- Main layout -->
+    <div class="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+        <!-- LEFT: Product List -->
+        <div class="lg:col-span-2">
+
+            <!-- Select All -->
+            <div class="flex items-center gap-3 mb-5 font-medium text-[#8A5252]">
+                <input type="checkbox" class="w-5 h-5 accent-[#8A5252]">
+                <span>Chọn tất cả sản phẩm</span>
+            </div>
+
+            <!-- Header row -->
+            <div class="grid grid-cols-12 text-[#8A5252] text-[14px] font-semibold border-b pb-3 hidden md:grid">
+                <div class="col-span-1"></div>
+                <div class="col-span-3">Hình ảnh</div>
+                <div class="col-span-3">Thông tin</div>
+                <div class="col-span-2">Màu sắc</div>
+                <div class="col-span-1">Size</div>
+                <div class="col-span-1">Số lượng</div>
+                <div class="col-span-1">Giá tiền</div>
+            </div>
+
+            <!-- Product item -->
+            <div class="grid grid-cols-12 items-center gap-4 py-5 border-b">
+
+                <input type="checkbox" class="col-span-1 w-5 h-5 accent-[#8A5252]">
+
+                <!-- Image -->
+                <div class="col-span-3">
+                    <img src="/assets/img/sale1.png" class="w-full max-w-[100px] rounded-lg">
+                </div>
+
+                <!-- Info -->
+                <div class="col-span-3 text-[#8A5252] text-[14px] leading-snug">
+                    <p class="font-semibold text-[15px]">Đầm phối tay xòe</p>
+                </div>
+
+                <!-- Color -->
+                <div class="col-span-2 flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-full bg-blue-300 border"></span>
+                </div>
+
+                <!-- Size -->
+                <div class="col-span-1">
+                    <select class="border px-2 py-1 rounded-md bg-white w-full shadow-sm">
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                    </select>
+                </div>
+
+                <!-- Quantity -->
+                <div class="col-span-1 flex items-center gap-1 justify-center">
+                    <button class="px-2 bg-gray-300 rounded">-</button>
+                    <span>2</span>
+                    <button class="px-2 bg-gray-300 rounded">+</button>
+                </div>
+
+                <!-- Price -->
+                <div class="col-span-1 flex items-center justify-between font-bold text-[#8A5252] gap-5">
+                    785,000 đ
+                    <button class="text-xl hover:text-red-500">&times;</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT: Order Summary -->
+        <div class="bg-[#ECE2D9] px-6 py-8 rounded-lg shadow-md h-max flex flex-col gap-4">
+
+            <h2 class="font-bold text-[18px] text-[#8A5252] border-b pb-3">ĐƠN HÀNG CỦA BẠN</h2>
+
+            <p class="flex justify-between text-[16px]">Tổng cộng: <span>...</span></p>
+            <p class="flex justify-between text-[16px]">Giảm giá: <span>...</span></p>
+
+            <p class="flex justify-between text-[16px] border-b pb-3">Tạm tính: <span>...</span></p>
+
+            <p class="flex justify-between text-[18px] font-bold text-[#D62929]">
+                Tổng tiền: <span>1,570,000 đ</span>
+            </p>
+
+            <button class="bg-[#E44945] py-3 rounded-md text-white font-semibold text-[16px] hover:opacity-90 transition">
+                TIẾN HÀNH ĐẶT HÀNG
+            </button>
+
+            <button class="bg-black py-3 rounded-md text-white font-semibold text-[16px] hover:opacity-85 transition">
+                TIẾP TỤC MUA SẮM
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

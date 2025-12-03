@@ -1,61 +1,65 @@
-<div class="flex justify-between items-center px-6 sm:px-16 py-5 bg-white border-b border-gray-200 shadow-sm font-[Poppins]">
-  <!-- Logo Left -->
-  <div class="text-2xl sm:text-3xl font-extrabold text-red-700 tracking-wide">
-    PORTFOLIO
-  </div>
+<nav class="fixed top-0 left-0 w-full h-[80px] bg-[#E8DCD1] shadow-sm z-50 font-[poppins]">
+  <div class="max-w-[1600px] mx-auto h-full px-6 flex items-center justify-between">
 
-  <!-- Menu Center -->
-  <div class="hidden md:flex gap-8 lg:gap-16 text-[18px] lg:text-[20px]">
-    <a 
-      (click)="goHome()"
-      class="relative font-medium text-gray-700 cursor-pointer transition-colors duration-300
-             hover:text-red-700 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-red-700 
-             after:transition-all after:duration-300 hover:after:w-full">
-      Home
+    <!-- LEFT – Logo -->
+    <a (click)="goHome()" class="cursor-pointer flex items-center">
+      <img src="/assets/icon/logo1.png" alt="logo" class="w-[70px]">
     </a>
 
-    <a 
-      (click)="goProject()"
-      class="relative font-medium text-gray-700 cursor-pointer transition-colors duration-300
-             hover:text-red-700 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-red-700 
-             after:transition-all after:duration-300 hover:after:w-full">
-      Projects
-    </a>
+    <!-- CENTER – Menu -->
+    <div class="hidden md:flex items-center gap-10 text-[#8A5252]">
 
-    <a
-      (click)="goExperience()"
-      class="relative font-medium text-gray-700 cursor-pointer transition-colors duration-300
-             hover:text-red-700 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-red-700 
-             after:transition-all after:duration-300 hover:after:w-full">
-      Experience
-    </a>
+      <a (click)="goSale()" class="relative hover:after:w-full after:content-[''] after:block after:w-0 after:h-[2px] after:bg-[#8A5252] after:transition-all duration-300 text-[26px] font-semibold">
+        SALE
+      </a>
 
-    <a 
-      (click)="goCertificate()"
-      class="relative font-medium text-gray-700 cursor-pointer transition-colors duration-300
-             hover:text-red-700 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-red-700 
-             after:transition-all after:duration-300 hover:after:w-full">
-      Certificates
-    </a>
+      <a (click)="goDress()" class="relative hover:after:w-full after:content-[''] after:block after:w-0 after:h-[2px] after:bg-[#8A5252] after:transition-all duration-300 text-[26px] font-semibold">
+        ĐẦM
+      </a>
+
+      <a (click)="goShirt()" class="relative hover:after:w-full after:content-[''] after:block after:w-0 after:h-[2px] after:bg-[#8A5252] after:transition-all duration-300 text-[26px] font-semibold">
+        ÁO
+      </a>
+
+      <a (click)="goTrousers()" class="relative hover:after:w-full after:content-[''] after:block after:w-0 after:h-[2px] after:bg-[#8A5252] after:transition-all duration-300 text-[26px] font-semibold">
+        QUẦN
+      </a>
+
+      <a (click)="goSkirt()" class="relative hover:after:w-full after:content-[''] after:block after:w-0 after:h-[2px] after:bg-[#8A5252] after:transition-all duration-300 text-[26px] font-semibold">
+        CHÂN VÁY
+      </a>
+
+      <a (click)="goStore()" class="relative hover:after:w-full after:content-[''] after:block after:w-0 after:h-[2px] after:bg-[#8A5252] after:transition-all duration-300 text-[26px] font-semibold">
+        LOOKBOOK
+      </a>
+
+    </div>
+
+    <!-- RIGHT – Icons (gộp 1 nhóm, căn thẳng hàng đẹp hơn) -->
+    <div class="hidden md:flex items-center gap-6">
+
+      <img (click)="goFavorite()" src="/assets/icon/heart1.png"
+           class="w-[30px] cursor-pointer">
+
+      <img (click)="goCart()" src="/assets/icon/giohang.png"
+           class="w-[30px] cursor-pointer">
+
+      <img src="/assets/icon/thongbao1.png" class="w-[30px] cursor-pointer">
+
+      <img src="/assets/icon/user1.png" class="w-[30px] cursor-pointer">
+
+      <img src="/assets/icon/timkiem3.png" class="w-[26px] cursor-pointer">
+
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <div class="md:hidden flex items-center">
+      <button class="text-gray-700 text-3xl focus:outline-none" (click)="toggleMenu()">
+        ☰
+      </button>
+    </div>
+
   </div>
+</nav>
 
-  <!-- Logo Right -->
-  <div class="hidden md:block text-2xl sm:text-3xl italic font-light text-amber-950 tracking-wide">
-    Developer
-  </div>
-
-  <!-- Mobile Hamburger -->
-  <div class="md:hidden flex items-center">
-    <button class="text-gray-700 text-3xl focus:outline-none" (click)="toggleMenu()">
-      ☰
-    </button>
-  </div>
-</div>
-
-<!-- Mobile Menu Dropdown -->
-<div *ngIf="isMenuOpen" class="md:hidden flex flex-col gap-4 px-6 py-4 bg-white border-t border-gray-200 shadow-sm text-[18px]">
-  <a (click)="goHome()" class="font-medium text-gray-700 hover:text-red-700">Home</a>
-  <a (click)="goProject()" class="font-medium text-gray-700 hover:text-red-700">Projects</a>
-  <a class="font-medium text-gray-700 hover:text-red-700">Experience</a>
-  <a (click)="goCertificate()" class="font-medium text-gray-700 hover:text-red-700">Certificates</a>
-</div>
+<div class="h-[80px]"></div>

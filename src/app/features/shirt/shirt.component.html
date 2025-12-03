@@ -1,0 +1,119 @@
+<app-navbar></app-navbar>
+<div class="bg-[#F7EBE4] min-h-screen font-[Poppins] px-6 sm:px-16 py-10">
+  <h2 class="text-[#8A5252] text-[34px] font-semibold text-center mb-10">
+    ÁO
+  </h2>
+
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+    <app-product-filter></app-product-filter>
+
+    <!-- ================= PRODUCT LIST ================ -->
+    <div class="lg:col-span-3">
+
+      <!-- Sort dropdown -->
+      <div class="flex justify-end mb-6">
+        <select class="px-4 py-2 border rounded-md">
+          <option>Mới nhất</option>
+          <option>Giá tăng dần</option>
+          <option>Giá giảm dần</option>
+        </select>
+      </div>
+
+      <!-- Product grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+        <!-- SẢN PHẨM -->
+        <div class="p-2">
+          <div class="relative">
+            <img src="/assets/img/shirt1.png" alt="" class=""/>
+          </div>
+
+          <h4 class="text-center mt-3 font-semibold">Tên sản phẩm</h4>
+
+          <div class="text-center">
+            <span class="text-red-600 font-bold text-lg">500.000đ</span>
+            <span class="line-through text-gray-500 ml-2">750.000đ</span>
+            <div class="text-sm text-gray-500">(20 sản phẩm đã bán)</div>
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="relative">
+            <img src="/assets/img/shirt2.png" alt="" class=""/>
+          </div>
+
+          <h4 class="text-center mt-3 font-semibold">Tên sản phẩm</h4>
+
+          <div class="text-center">
+            <span class="text-red-600 font-bold text-lg">500.000đ</span>
+            <span class="line-through text-gray-500 ml-2">750.000đ</span>
+            <div class="text-sm text-gray-500">(20 sản phẩm đã bán)</div>
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="relative">
+            <img src="/assets/img/shirt3.png" alt="" class=""/>
+          </div>
+
+          <h4 class="text-center mt-3 font-semibold">Tên sản phẩm</h4>
+
+          <div class="text-center">
+            <span class="text-red-600 font-bold text-lg">500.000đ</span>
+            <span class="line-through text-gray-500 ml-2">750.000đ</span>
+            <div class="text-sm text-gray-500">(20 sản phẩm đã bán)</div>
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="relative">
+            <img src="/assets/img/shirt3.png" alt="" class=""/>
+          </div>
+
+          <h4 class="text-center mt-3 font-semibold">Tên sản phẩm</h4>
+
+          <div class="text-center">
+            <span class="text-red-600 font-bold text-lg">500.000đ</span>
+            <span class="line-through text-gray-500 ml-2">750.000đ</span>
+            <div class="text-sm text-gray-500">(20 sản phẩm đã bán)</div>
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="relative">
+            <img src="/assets/img/shirt3.png" alt="" class=""/>
+          </div>
+
+          <h4 class="text-center mt-3 font-semibold">Tên sản phẩm</h4>
+
+          <div class="text-center">
+            <span class="text-red-600 font-bold text-lg">500.000đ</span>
+            <span class="line-through text-gray-500 ml-2">750.000đ</span>
+            <div class="text-sm text-gray-500">(20 sản phẩm đã bán)</div>
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="relative">
+            <img src="/assets/img/shirt3.png" alt="" class=""/>
+          </div>
+
+          <h4 class="text-center mt-3 font-semibold">Tên sản phẩm</h4>
+
+          <div class="text-center">
+            <span class="text-red-600 font-bold text-lg">500.000đ</span>
+            <span class="line-through text-gray-500 ml-2">750.000đ</span>
+            <div class="text-sm text-gray-500">(20 sản phẩm đã bán)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- BUTTON SCROLL TO TOP
+    <button 
+        *ngIf="showScrollTop"
+        (click)="scrollToTop()"
+        class="fixed bottom-6 right-6 bg-[#8A5252] text-white w-12 h-12 rounded-full 
+                flex items-center justify-center text-xl shadow-xl 
+                hover:bg-[#723f3f] transition-all duration-300 z-50">
+        ↑
+    </button> -->
+</div>
+<app-highlight-products></app-highlight-products>
+<app-footer></app-footer>

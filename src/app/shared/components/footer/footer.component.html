@@ -1,0 +1,75 @@
+<!-- FOOTER -->
+<div class="bg-[#F7EBE4] pb-5 font-[poppins]">
+  <p class="text-center text-[48px] text-[#8A5252] border-b border-black">THEO DÕI CHÚNG TÔI</p>
+</div>
+<img src="/assets/img/footer1.png" alt="" class="w-full">
+<div class="bg-[#D9C0AA] font-[poppins]">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 px-6 py-10 text-[#522222]">
+
+    <!-- Cột 1 -->
+    <div class="">
+      <img src="/assets/icon/logo1.png" alt="" class="w-[30%]" />
+      <button
+        (click)="goAbout()"
+        class="mb-2">Về chúng tôi</button><br>
+      <button 
+        (click)="goNews()"
+        class="mb-2">Tin tức</button><br>
+      <button class="mb-2">Cửa hàng</button>
+    </div>
+
+    <!-- Cột 2 -->
+    <div>
+      <p class="text-[20px] font-bold mb-4">LIÊN KẾT VỚI CHÚNG TÔI</p>
+
+      <div class="flex items-center gap-3 mb-3">
+        <img src="/assets/icon/facebook.png" class="w-6 h-6" />
+        <button>Facebook</button>
+      </div>
+
+      <div class="flex items-center gap-3 mb-3">
+        <img src="/assets/icon/instagram.png" class="w-6 h-6" />
+        <button>Instagram</button>
+      </div>
+
+    </div>
+
+    <!-- Cột 3 -->
+    <div>
+      <p class="text-[20px] font-bold mb-4">CHÍNH SÁCH BÁN HÀNG</p>
+      <button class="mb-2">Chính sách vận chuyển</button><br>
+      <button class="mb-2">Chính sách đổi trả</button><br>
+      <button class="mb-2">Hướng dẫn chọn size</button>
+    </div>
+
+    <!-- Cột 4 -->
+    <div>
+      <p class="text-[20px] font-bold mb-4">ĐĂNG KÝ NHẬN TIN</p>
+
+      <div class="flex items-center bg-white rounded-2xl mb-3">
+        <input
+          type="text"
+          placeholder="Nhập email của bạn"
+          class="outline-none flex-1"
+        />
+        <button class="bg-black text-white px-4 py-2 rounded-lg">
+          ĐĂNG KÝ
+        </button>
+      </div>
+
+      <p class="text-sm leading-5">
+        Để cập nhật những sản phẩm mới, nhận thông tin ưu đãi đặc biệt và thông tin giảm giá khác.
+      </p>
+    </div>
+
+  </div>
+  <!-- BUTTON SCROLL TO TOP
+  <button 
+    *ngIf="showScrollTop"
+    (click)="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-[#8A5252] text-white w-12 h-12 rounded-full 
+            flex items-center justify-center text-xl shadow-xl 
+            hover:bg-[#723f3f] transition-all duration-300 z-50">
+    ↑
+  </button> -->
+</div>

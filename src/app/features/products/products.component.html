@@ -1,0 +1,173 @@
+<app-navbar></app-navbar>
+
+<div class="bg-[#F7EBE4] font-[poppins] px-4 md:px-20 py-10">
+
+  <!-- 2 CỘT: HÌNH ẢNH | THÔNG TIN -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+    <!-- ================= CỘT TRÁI ================= -->
+    <div class="flex gap-6">
+
+      <!-- THUMBNAILS -->
+      <div class="flex flex-col gap-4 w-[90px]">
+        <img src="/assets/img/ao-so-mi1.png" class="cursor-pointer">
+        <img src="/assets/img/ao-so-mi2.png" class="cursor-pointer">
+        <img src="/assets/img/ao-so-mi3.png" class="cursor-pointer">
+        <img src="/assets/img/ao-so-mi4.png" class="cursor-pointer">
+      </div>
+
+      <!-- ẢNH CHÍNH -->
+      <div>
+        <img src="/assets/img/ao-so-mi.png" class="cursor-pointer max-w-[450px]">
+      </div>
+    </div>
+
+    <!-- ================= CỘT PHẢI ================= -->
+    <div class="flex flex-col gap-6">
+
+      <!-- TÊN + ICON -->
+      <div class="flex items-start gap-4 justify-between">
+        <p class="font-bold text-[32px] leading-tight">
+          Áo sơ mi tay chườm đính đá
+        </p>
+        <div class="flex gap-5">
+            <img src="/assets/icon/heart1.png" class="w-[28px] cursor-pointer mt-2">
+            <img src="/assets/icon/share.png" class="w-[28px] cursor-pointer mt-2">
+        </div>
+      </div>
+
+      <!-- MÃ SP + SAO -->
+      <div class="flex items-center justify-between">
+        <p class="text-[24px] font-semibold">Mã sản phẩm: 290905</p>
+        <div class="flex items-center gap-1">
+          <img src="/assets/icon/star.png" class="h-6">
+          <img src="/assets/icon/star.png" class="h-6">
+          <img src="/assets/icon/star.png" class="h-6">
+          <img src="/assets/icon/star.png" class="h-6">
+          <img src="/assets/icon/star.png" class="h-6">
+          <p class="text-[20px]">(0)</p>
+        </div>
+      </div>
+
+      <!-- GIÁ + ĐÁNH GIÁ -->
+      <div class="flex items-center gap-10 justify-between">
+        <p class="font-bold text-[40px] text-red-500">500,000 VNĐ</p>
+        <p class="text-[24px] text-gray-600">(0 đánh giá)</p>
+      </div>
+
+      <!-- MÀU SẮC -->
+      <div class="flex items-center gap-20 justify-between">
+        <p class="font-bold text-[30px]">Màu sắc</p>
+        <div class="bg-[#8A5252] px-4 py-1 rounded-lg flex items-center">
+          <p class="text-[24px] font-semibold text-white">Trắng</p>
+        </div>
+      </div>
+
+      <!-- SIZE -->
+      <div class="flex items-center gap-20 justify-between">
+        <p class="font-bold text-[30px]">Size</p>
+        <div class="mt-1 flex flex-wrap gap-3 cursor-pointer ">
+          <span class="px-4 py-1 border rounded-lg bg-white text-[20px] hover:scale-105 transition">S</span>
+          <span class="px-4 py-1 border rounded-lg bg-white text-[20px] hover:scale-105 transition">M</span>
+          <span class="px-4 py-1 border rounded-lg bg-white text-[20px] hover:scale-105 transition">L</span>
+          <span class="px-4 py-1 border rounded-lg bg-white text-[20px] hover:scale-105 transition">XL</span>
+        </div>
+      </div>
+
+      <!-- SỐ LƯỢNG -->
+      <div>
+        <p class="font-bold text-[30px]">Số lượng</p>
+      </div>
+
+      <!-- NÚT -->
+      <div class="flex items-center gap-4 mt-3 justify-between">
+        <button class="bg-black text-white px-8 py-3 rounded-lg text-[24px] font-semibold hover:scale-105 transition">
+          THÊM VÀO GIỎ HÀNG
+        </button>
+        <button class="border border-black px-8 py-3 rounded-lg text-[24px] font-semibold hover:scale-105 transition">
+          MUA NGAY
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==================== SẢN PHẨM NỔI BẬT ==================== -->
+  <div class="flex justify-between items-center mb-6 mt-16">
+    <h2 class="text-[#8A5252] text-[40px] font-semibold">
+      SẢN PHẨM NỔI BẬT
+    </h2>
+
+    <div class="flex gap-2">
+      <button (click)="scrollLeft()" class="bg-white p-2 rounded-full shadow hover:scale-105">‹</button>
+      <button (click)="scrollRight()" class="bg-white p-2 rounded-full shadow hover:scale-105">›</button>
+    </div>
+  </div>
+
+  <!-- CAROUSEL -->
+  <div
+    #carousel
+    class="flex justify-between overflow-x-auto scroll-smooth pb-4 gap-6">
+
+    <!-- 4 SLIDES — GIỮ NGUYÊN -->
+    <!-- Slide 1 -->
+    <div class="min-w-[260px]">
+      <img src="/assets/img/sale1.png">
+      <p class="text-[20px] font-semibold mt-3">Tên sản phẩm</p>
+      <div class="flex items-center gap-3 mt-2">
+        <div class="w-6 h-6 bg-white border rounded-full"></div>
+        <div class="w-6 h-6 bg-gray-300 border rounded-full"></div>
+        <div class="text-[28px] text-red-500">♥</div>
+      </div>
+      <p class="text-[20px] text-red-600 font-bold mt-2">750,000 VNĐ</p>
+      <div class="flex items-center gap-1 mt-1 text-yellow-400 text-[22px]">
+        ★ ★ ★ ★ ☆
+      </div>
+      <p class="text-[14px] mt-1">(20 đã bán)</p>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="min-w-[260px]">
+      <img src="/assets/img/sale2.png">
+      <p class="text-[20px] font-semibold mt-3">Tên sản phẩm</p>
+      <div class="flex items-center gap-3 mt-2">
+        <div class="w-6 h-6 bg-black border rounded-full"></div>
+        <div class="text-[28px]">♡</div>
+      </div>
+      <p class="text-[20px] text-red-600 font-bold mt-2">750,000 VNĐ</p>
+      <div class="flex items-center gap-1 mt-1 text-yellow-400 text-[22px]">★ ★ ★ ★ ☆</div>
+      <p class="text-[14px] mt-1">(20 đã bán)</p>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="min-w-[260px]">
+      <img src="/assets/img/sale3.png">
+      <p class="text-[20px] font-semibold mt-3">Tên sản phẩm</p>
+      <div class="flex items-center gap-3 mt-2">
+        <div class="w-6 h-6 bg-blue-100 border rounded-full"></div>
+        <div class="w-6 h-6 bg-white border rounded-full"></div>
+        <div class="text-[28px]">♡</div>
+      </div>
+      <p class="text-[20px] text-red-600 font-bold mt-2">750,000 VNĐ</p>
+      <div class="flex items-center gap-1 mt-1 text-yellow-400 text-[22px]">★ ★ ★ ★ ☆</div>
+      <p class="text-[14px] mt-1">(20 đã bán)</p>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="min-w-[260px]">
+      <img src="/assets/img/sale4.png">
+      <p class="text-[20px] font-semibold mt-3">Tên sản phẩm</p>
+      <div class="flex items-center gap-3 mt-2">
+        <div class="w-6 h-6 bg-white border rounded-full"></div>
+        <div class="text-[28px]">♡</div>
+      </div>
+      <p class="text-[20px] text-red-600 font-bold mt-2">750,000 VNĐ</p>
+      <div class="flex items-center gap-1 mt-1 text-yellow-400 text-[22px]">★ ★ ★ ★ ☆</div>
+      <p class="text-[14px] mt-1">(20 đã bán)</p>
+    </div>
+
+  </div>
+
+</div>
+
+<app-footer></app-footer>

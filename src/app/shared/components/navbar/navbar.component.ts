@@ -19,17 +19,33 @@ export class NavbarComponent {
   goHome(){
     this.router.navigate(['/home']);
   }
-  goCertificate() {
-    this.router.navigate(['/certificate']);
-    
+  goSale() {
+    this.router.navigate(['/sale']);
   }
-  goExperience() {
-    this.router.navigate(['/experience']);
+  goDress() {
+    this.router.navigate(['/dress']);
   }
-  goProject() {
-    this.router.navigate(['/project']);
+  goTrousers() {
+    this.router.navigate(['/trousers']);
+    console.log("Quan");
+  }
+  goShirt() {
+    this.router.navigate(['/shirt']);
+    console.log("Ao");
+  }
+  goSkirt() {
+    this.router.navigate(['/skirt']);
+  }
+  goStore() {
+    this.router.navigate(['/store']);
   }
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+  goFavorite() {
+    this.router.navigate(['/favorite']);
+  }
+  goCart() {
+    this.router.navigate(['/cart']);
   }
 }
