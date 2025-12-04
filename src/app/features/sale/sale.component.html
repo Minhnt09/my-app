@@ -168,25 +168,25 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
 
         <!-- SẢN PHẨM -->
-        <div class="p-2">
+        <div class="p-2" *ngFor="let product of listProduct">
           <div class="relative">
             <span class="absolute left-2 top-2 bg-red-500 text-white text-xs px-2 py-1 rounded">-30%</span>
             <img
-              [routerLink]="['/products']"
-              src="/assets/img/sale1.png" alt="" class="cursor-pointer"/>
+              [routerLink]="['/products', product.id]"
+              [src]="product.image" alt="" class="cursor-pointer"/>
           </div>
 
           <h4
-            [routerLink]="['/products']"
-            class="text-center mt-3 font-semibold cursor-pointer">Set 1</h4>
+            [routerLink]="['/products', product.id]"
+            class="text-center mt-3 font-semibold cursor-pointer">{{product.name}}</h4>
 
           <div class="text-center">
-            <span class="text-red-600 font-bold text-lg">500.000đ</span>
+            <span class="text-red-600 font-bold text-lg">{{product.price | number}} VNĐ</span>
             <span class="line-through text-gray-500 ml-2">750.000đ</span>
-            <div class="text-sm text-gray-500">(20 sản phẩm đã bán)</div>
+            <div class="text-sm text-gray-500">({{product.stock}} sản phẩm đã bán)</div>
           </div>
         </div>
-        <div class="p-2">
+        <!-- <div class="p-2">
           <div class="relative">
             <span class="absolute left-2 top-2 bg-red-500 text-white text-xs px-2 py-1 rounded">-30%</span>
             <img src="/assets/img/sale2.png" alt="" class="cursor-pointer"/>
@@ -255,20 +255,10 @@
             <span class="line-through text-gray-500 ml-2">750.000đ</span>
             <div class="text-sm text-gray-500">(20 sản phẩm đã bán)</div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
-
   </div>
-  <!-- BUTTON SCROLL TO TOP
-    <button 
-        *ngIf="showScrollTop"
-        (click)="scrollToTop()"
-        class="fixed bottom-6 right-6 bg-[#8A5252] text-white w-12 h-12 rounded-full 
-                flex items-center justify-center text-xl shadow-xl 
-                hover:bg-[#723f3f] transition-all duration-300 z-50">
-        ↑
-    </button> -->
 </div>
 <app-highlight-products></app-highlight-products>
 <app-footer></app-footer>

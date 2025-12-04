@@ -31,18 +31,20 @@
             </div>
 
             <!-- Product item -->
-            <div class="grid grid-cols-12 items-center gap-4 py-5 border-b">
+            <div 
+                *ngFor="let product of cart"
+                class="grid grid-cols-12 items-center gap-4 py-5 border-b">
 
                 <input type="checkbox" class="col-span-1 w-5 h-5 accent-[#8A5252]">
 
                 <!-- Image -->
                 <div class="col-span-3">
-                    <img src="/assets/img/sale1.png" class="w-full max-w-[100px] rounded-lg">
+                    <img src="{{product.image}}" class="w-full max-w-[100px] rounded-lg">
                 </div>
 
                 <!-- Info -->
                 <div class="col-span-3 text-[#8A5252] text-[14px] leading-snug">
-                    <p class="font-semibold text-[15px]">Đầm phối tay xòe</p>
+                    <p class="font-semibold text-[15px]">{{product.name}}</p>
                 </div>
 
                 <!-- Color -->
@@ -53,9 +55,7 @@
                 <!-- Size -->
                 <div class="col-span-1">
                     <select class="border px-2 py-1 rounded-md bg-white w-full shadow-sm">
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
+                        {{product.size}}
                     </select>
                 </div>
 
@@ -68,7 +68,7 @@
 
                 <!-- Price -->
                 <div class="col-span-1 flex items-center justify-between font-bold text-[#8A5252] gap-5">
-                    785,000 đ
+                    {{product.price | number}} đ
                     <button class="text-xl hover:text-red-500">&times;</button>
                 </div>
             </div>
