@@ -1,0 +1,16 @@
+<!-- SẢN PHẨM -->
+<div 
+    class="p-2 hover:scale-105 transition">
+    <div class="relative cursor-pointer"
+       [routerLink]="['/products', product.id]">
+    <img [src]="product.image" alt="" class=""/>
+    </div>
+
+    <h4 class="text-center mt-3 font-semibold">{{product.name}}</h4>
+
+    <div class="text-center">
+    <span class="text-red-600 font-bold text-lg">{{product.price | number}} VNĐ</span>
+    <span class="line-through text-gray-500 ml-2">750.000đ</span>
+    <div class="text-sm text-gray-500">({{product.stock}} sản phẩm đã bán)</div>
+    </div>
+</div>

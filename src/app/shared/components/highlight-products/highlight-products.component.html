@@ -24,87 +24,33 @@
   <!-- CAROUSEL -->
   <div
     #carousel
-    class="flex justify-between gap-6 overflow-x-auto scroll-smooth pb-4">
+    class="flex gap-6 overflow-x-auto scroll-smooth pb-4 snap-x">
 
-    <!-- === SLIDE 1 === -->
-    <div class="min-w-[260px]">
-      <img src="/assets/img/sale1.png" class="">
+    <div
+      *ngFor="let product of products"
+      class="min-w-[25%] max-w-[25%] snap-start">
 
-      <p class="text-[20px] font-semibold mt-3">Tên sản phẩm</p>
+      <img [src]="product.image" class=" rounded-xl shadow">
+
+      <p class="text-[20px] font-semibold mt-3">{{product.name}}</p>
 
       <div class="flex items-center gap-3 mt-2">
         <div class="w-6 h-6 bg-white border rounded-full"></div>
         <div class="w-6 h-6 bg-gray-300 border rounded-full"></div>
-        <div class="text-[28px] text-red-500">♥</div>
+        <div class="text-[28px] text-red-500 cursor-pointer">♥</div>
       </div>
 
-      <p class="text-[20px] text-red-600 font-bold mt-2">750,000 VNĐ</p>
+      <p class="text-[20px] text-red-600 font-bold mt-2">
+        {{ product.price | number }} VNĐ
+      </p>
 
       <div class="flex items-center gap-1 mt-1 text-yellow-400 text-[22px]">
         ★ ★ ★ ★ ☆
       </div>
 
-      <p class="text-[14px] mt-1">(20 đã bán)</p>
+      <p class="text-[14px] mt-1">( {{ product.stock }} đã bán )</p>
+
     </div>
 
-    <!-- === SLIDE 2 === -->
-    <div class="min-w-[260px]">
-      <img src="/assets/img/sale2.png" class="">
-
-      <p class="text-[20px] font-semibold mt-3">Tên sản phẩm</p>
-
-      <div class="flex items-center gap-3 mt-2">
-        <div class="w-6 h-6 bg-black border rounded-full"></div>
-        <div class="text-[28px] text-gray-700">♡</div>
-      </div>
-
-      <p class="text-[20px] text-red-600 font-bold mt-2">750,000 VNĐ</p>
-
-      <div class="flex items-center gap-1 mt-1 text-yellow-400 text-[22px]">
-        ★ ★ ★ ★ ☆
-      </div>
-
-      <p class="text-[14px] mt-1">(20 đã bán)</p>
-    </div>
-
-    <!-- === SLIDE 3 === -->
-    <div class="min-w-[260px]">
-      <img src="/assets/img/sale3.png" class="">
-
-      <p class="text-[20px] font-semibold mt-3">Tên sản phẩm</p>
-
-      <div class="flex items-center gap-3 mt-2">
-        <div class="w-6 h-6 bg-blue-100 border rounded-full"></div>
-        <div class="w-6 h-6 bg-white border rounded-full"></div>
-        <div class="text-[28px] text-gray-700">♡</div>
-      </div>
-
-      <p class="text-[20px] text-red-600 font-bold mt-2">750,000 VNĐ</p>
-
-      <div class="flex items-center gap-1 mt-1 text-yellow-400 text-[22px]">
-        ★ ★ ★ ★ ☆
-      </div>
-
-      <p class="text-[14px] mt-1">(20 đã bán)</p>
-    </div>
-
-    <!-- === SLIDE 4 === -->
-    <div class="min-w-[260px]">
-      <img src="/assets/img/sale4.png" class="">
-
-      <p class="text-[20px] font-semibold mt-3">Tên sản phẩm</p>
-
-      <div class="flex items-center gap-3 mt-2">
-        <div class="w-6 h-6 bg-white border rounded-full"></div>
-        <div class="text-[28px] text-gray-700">♡</div>
-      </div>
-
-      <p class="text-[20px] text-red-600 font-bold mt-2">750,000 VNĐ</p>
-
-      <div class="flex items-center gap-1 mt-1 text-yellow-400 text-[22px]">
-        ★ ★ ★ ★ ☆
-      </div>
-      <p class="text-[14px] mt-1">(20 đã bán)</p>
-    </div>
   </div>
 </div>

@@ -23,7 +23,9 @@
           {{ product.name }}
         </p>
         <div class="flex gap-5">
-            <img src="/assets/icon/heart1.png" class="w-[28px] cursor-pointer mt-2">
+            <img
+              (click)="addToFavorite()"
+              src="/assets/icon/heart1.png" class="w-[28px] cursor-pointer mt-2">
             <img src="/assets/icon/share.png" class="w-[28px] cursor-pointer mt-2">
         </div>
       </div>
@@ -75,7 +77,9 @@
           class="bg-black text-white px-8 py-3 rounded-lg text-[24px] font-semibold hover:scale-105 transition">
             THÊM VÀO GIỎ HÀNG
         </button>
-        <button class="border border-black px-8 py-3 rounded-lg text-[24px] font-semibold hover:scale-105 transition">
+        <button
+          (click)="buyNow()" 
+          class="border border-black px-8 py-3 rounded-lg text-[24px] font-semibold hover:scale-105 transition">
           MUA NGAY
         </button>
       </div>

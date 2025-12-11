@@ -1,51 +1,62 @@
 <!-- FOOTER -->
-<div class="bg-[#F7EBE4] pb-5 font-[poppins]">
+<div class="bg-[#F7EBE4] pb-5">
   <p class="text-center text-[48px] text-[#8A5252] border-b border-black">THEO DÕI CHÚNG TÔI</p>
 </div>
 <img src="/assets/img/footer1.png" alt="" class="w-full">
-<div class="bg-[#D9C0AA] font-[poppins]">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 px-6 py-10 text-[#522222]">
+<div class="bg-[#D9C0AA]">
+  <div class="mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 px-6 py-10">
 
     <!-- Cột 1 -->
     <div class="">
       <img src="/assets/icon/logo1.png" alt="" class="w-[30%]" />
       <button
         (click)="goAbout()"
-        class="mb-2">Về chúng tôi</button><br>
+        class="font-medium text-[24px] text-[#522222] mb-2">Về chúng tôi</button><br>
       <button 
         (click)="goNews()"
-        class="mb-2">Tin tức</button><br>
-      <button class="mb-2">Cửa hàng</button>
+        class="font-medium text-[24px] text-[#522222] mb-2">Tin tức</button><br>
+      <button class="font-medium text-[24px] text-[#522222] mb-2">Cửa hàng</button>
     </div>
 
     <!-- Cột 2 -->
     <div>
-      <p class="text-[20px] font-bold mb-4">LIÊN KẾT VỚI CHÚNG TÔI</p>
+      <p class="text-[26px] font-bold mb-4">LIÊN KẾT VỚI CHÚNG TÔI</p>
 
-      <div class="flex items-center gap-3 mb-3">
+      <div class="flex items-center gap-3 mb-3 cursor-pointer">
         <img src="/assets/icon/facebook.png" class="w-6 h-6" />
-        <button>Facebook</button>
+        <a
+          href="https://www.facebook.com/Nguyenmsut"
+          target="_blank"
+          class="font-medium text-[24px] text-[#522222] mb-2"
+        >
+          Facebook
+        </a>
       </div>
-
-      <div class="flex items-center gap-3 mb-3">
+      <div class="flex items-center gap-3 mb-3 cursor-pointer">
         <img src="/assets/icon/instagram.png" class="w-6 h-6" />
-        <button>Instagram</button>
+        <a
+          href="https://www.facebook.com/Nguyenmsut"
+          target="_blank"
+          class="font-medium text-[24px] text-[#522222] mb-2"
+        >
+          Instagram
+        </a>
       </div>
-
     </div>
 
     <!-- Cột 3 -->
     <div>
-      <p class="text-[20px] font-bold mb-4">CHÍNH SÁCH BÁN HÀNG</p>
-      <button class="mb-2">Chính sách vận chuyển</button><br>
-      <button class="mb-2">Chính sách đổi trả</button><br>
-      <button class="mb-2">Hướng dẫn chọn size</button>
+      <p class="text-[26px] font-bold mb-4">CHÍNH SÁCH BÁN HÀNG</p>
+      <button class="font-medium text-[24px] text-[#522222] mb-2">Chính sách vận chuyển</button><br>
+      <button
+        (click)="goReturnPolicy()"
+        class="font-medium text-[24px] text-[#522222] mb-2">Chính sách đổi trả</button><br>
+      <button class="font-medium text-[24px] text-[#522222] mb-2">Hướng dẫn chọn size</button>
     </div>
 
     <!-- Cột 4 -->
     <div>
-      <p class="text-[20px] font-bold mb-4">ĐĂNG KÝ NHẬN TIN</p>
-
+      <p class="text-[26px] font-bold mb-4">ĐĂNG KÝ NHẬN TIN</p>
       <div class="flex items-center bg-white rounded-2xl mb-3">
         <input
           type="text"

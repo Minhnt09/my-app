@@ -4,34 +4,22 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { ProductFilterComponent } from '../../shared/components/product-filter/product-filter.component';
 import { HighlightProductsComponent } from '../../shared/components/highlight-products/highlight-products.component';
+import { listProduct } from '../../shared/constants/list-product.constants';
+import { ProductCardComponent } from '../../shared/components/product-card/product-card.component';
 
 @Component({
   selector: 'app-trousers',
-  imports: [NavbarComponent, CommonModule, FooterComponent, ProductFilterComponent, HighlightProductsComponent],
+  imports: [NavbarComponent, 
+            CommonModule, 
+            FooterComponent, 
+            ProductFilterComponent, 
+            HighlightProductsComponent,
+            ProductCardComponent
+          ],
   standalone: true,
   templateUrl: './trousers.component.html',
   styleUrl: './trousers.component.scss'
 })
 export class TrousersComponent {
-  // showScrollTop = false;
-
-  // // Khi người dùng cuộn trang
-  // @HostListener('window:scroll')
-  // onScroll() {
-  //   this.showScrollTop = window.pageYOffset > 300;
-  // }
-
-  // // Cuộn lên đầu trang
-  // scrollToTop() {
-  //   const scrollDuration = 800;
-  //   const scrollStep = -window.scrollY / (scrollDuration / 16);
-
-  //   const scrollInterval = setInterval(() => {
-  //     if (window.scrollY !== 0) {
-  //       window.scrollBy(0, scrollStep);
-  //     } else {
-  //       clearInterval(scrollInterval);
-  //     }
-  //   }, 16);
-  // }
+  products = listProduct.data.items;
 }

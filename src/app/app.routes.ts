@@ -12,6 +12,8 @@ import { FavoriteComponent } from './features/favorite/favorite.component';
 import { ProductsComponent } from './features/products/products.component';
 import { HighlightProductsComponent } from './shared/components/highlight-products/highlight-products.component';
 import { ShoppingCartComponent } from './features/shopping-cart/shopping-cart.component';
+import { ProductDetailComponent } from './features/product-detail/product-detail.component';
+import { ReturnPolicyComponent } from './features/return-policy/return-policy.component';
 
 export const routes: Routes = [
   {
@@ -70,5 +72,14 @@ export const routes: Routes = [
   {
     path: 'san-pham-noi-bat',
     component: HighlightProductsComponent
+  },
+  {
+    path: 'products-detail',
+    component: ProductDetailComponent
+  },
+  {
+    path: 'return-policy',
+    component: ReturnPolicyComponent
   }
+
 ];

@@ -1,103 +1,120 @@
 <app-navbar></app-navbar>
 
-<div class="bg-[#F7EBE4] font-[Poppins] min-h-screen py-10">
+<div class="bg-[#F7EBE4] min-h-screen py-10">
 
-    <!-- Title Section -->
-    <div class="text-center mb-6">
-        <h1 class="font-bold text-[36px] text-[#8A5252]">GIỎ HÀNG CỦA BẠN</h1>
-        <p class="text-[18px] text-[#8A5252]">Có n sản phẩm trong giỏ hàng</p>
-    </div>
-    <!-- Main layout -->
-    <div class="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+  <!-- Header -->
+  <div class="text-center mb-10">
+      <h1 class="font-bold text-[36px] text-[#8A5252]">GIỎ HÀNG CỦA BẠN</h1>
+      <p class="text-[18px] text-[#8A5252]">Có {{ cart.length }} sản phẩm trong giỏ hàng</p>
+  </div>
 
-        <!-- LEFT: Product List -->
-        <div class="lg:col-span-2">
+  <!-- Main Layout -->
+  <div class="max-w-[1500px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10">
 
-            <!-- Select All -->
-            <div class="flex items-center gap-3 mb-5 font-medium text-[#8A5252]">
-                <input type="checkbox" class="w-5 h-5 accent-[#8A5252]">
-                <span>Chọn tất cả sản phẩm</span>
-            </div>
+      <!-- LEFT -->
+      <div class="lg:col-span-2">
 
-            <!-- Header row -->
-            <div class="grid grid-cols-12 text-[#8A5252] text-[14px] font-semibold border-b pb-3 hidden md:grid">
-                <div class="col-span-1"></div>
-                <div class="col-span-3">Hình ảnh</div>
-                <div class="col-span-3">Thông tin</div>
-                <div class="col-span-2">Màu sắc</div>
-                <div class="col-span-1">Size</div>
-                <div class="col-span-1">Số lượng</div>
-                <div class="col-span-1">Giá tiền</div>
-            </div>
+          <!-- Select All -->
+          <div class="flex items-center gap-3 mb-5 text-[#8A5252] font-medium">
+              <input type="checkbox" class="w-5 h-5 accent-[#8A5252]" />
+              <span>Chọn tất cả sản phẩm</span>
+          </div>
 
-            <!-- Product item -->
-            <div 
-                *ngFor="let product of cart"
-                class="grid grid-cols-12 items-center gap-4 py-5 border-b">
+          <!-- Header row -->
+          <div class="hidden md:grid grid-cols-12 text-[#8A5252] text-[15px] font-semibold border-b pb-3">
+              <div class="col-span-1"></div>
+              <div class="col-span-3">Hình ảnh</div>
+              <div class="col-span-3">Thông tin</div>
+              <div class="col-span-2">Màu sắc</div>
+              <div class="col-span-1">Size</div>
+              <div class="col-span-1">SL</div>
+              <div class="col-span-1">Giá</div>
+          </div>
 
-                <input type="checkbox" class="col-span-1 w-5 h-5 accent-[#8A5252]">
+          <!-- Product List -->
+          <div
+              *ngFor="let product of cart; let i = index"
+              class="grid grid-cols-12 items-center gap-4 py-6 border-b rounded-xl px-3 shadow-sm">
 
-                <!-- Image -->
-                <div class="col-span-3">
-                    <img src="{{product.image}}" class="w-full max-w-[100px] rounded-lg">
-                </div>
+              <!-- Checkbox -->
+              <input type="checkbox" class="col-span-1 w-5 h-5 accent-[#8A5252]" />
 
-                <!-- Info -->
-                <div class="col-span-3 text-[#8A5252] text-[14px] leading-snug">
-                    <p class="font-semibold text-[15px]">{{product.name}}</p>
-                </div>
+              <!-- Image -->
+              <div class="col-span-3">
+                  <img 
+                    [src]="product.image"
+                    class="w-full max-w-[110px] rounded-lg shadow"
+                    alt="{{ product.name }}"
+                  />
+              </div>
 
-                <!-- Color -->
-                <div class="col-span-2 flex items-center gap-2">
-                    <span class="w-6 h-6 rounded-full bg-blue-300 border"></span>
-                </div>
+              <!-- Info -->
+              <div class="col-span-3 text-[#8A5252]">
+                  <p class="font-semibold text-[15px] leading-tight">{{ product.name }}</p>
+              </div>
 
-                <!-- Size -->
-                <div class="col-span-1">
-                    <select class="border px-2 py-1 rounded-md bg-white w-full shadow-sm">
-                        {{product.size}}
-                    </select>
-                </div>
+              <!-- Color -->
+              <div class="col-span-2 flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full border"
+                        [ngStyle]="{'background': product.color}">
+                  </span>
+              </div>
 
-                <!-- Quantity -->
-                <div class="col-span-1 flex items-center gap-1 justify-center">
-                    <button class="px-2 bg-gray-300 rounded">-</button>
-                    <span>2</span>
-                    <button class="px-2 bg-gray-300 rounded">+</button>
-                </div>
+              <!-- Size -->
+              <div class="col-span-1 font-semibold text-[#8A5252]">
+                  {{ product.size }}
+              </div>
 
-                <!-- Price -->
-                <div class="col-span-1 flex items-center justify-between font-bold text-[#8A5252] gap-5">
-                    {{product.price | number}} đ
-                    <button class="text-xl hover:text-red-500">&times;</button>
-                </div>
-            </div>
-        </div>
+              <!-- Quantity -->
+              <div class="col-span-1 flex items-center justify-center gap-2">
+                  <button (click)="changeQuantity(i, -1)" class="w-7 h-7 bg-gray-300 rounded flex items-center justify-center">-</button>
+                  <span class="font-semibold">{{ product.qty }}</span>
+                  <button (click)="changeQuantity(i, 1)" class="w-7 h-7 bg-gray-300 rounded flex items-center justify-center">+</button>
+              </div>
 
-        <!-- RIGHT: Order Summary -->
-        <div class="bg-[#ECE2D9] px-6 py-8 rounded-lg shadow-md h-max flex flex-col gap-4">
+              <!-- Price + Delete -->
+              <div class="col-span-1 flex flex-col items-end gap-2 font-bold text-[#8A5252]">
+                  <span>{{ (product.price * (product.qty || 1)) | number }} đ</span>
+                  <button (click)="removeItem(i)" class="text-sm text-red-500 hover:underline">Xoá</button>
+              </div>
+          </div>
 
-            <h2 class="font-bold text-[18px] text-[#8A5252] border-b pb-3">ĐƠN HÀNG CỦA BẠN</h2>
+      </div>
 
-            <p class="flex justify-between text-[16px]">Tổng cộng: <span>...</span></p>
-            <p class="flex justify-between text-[16px]">Giảm giá: <span>...</span></p>
+      <!-- RIGHT: Summary -->
+      <div class="bg-[#ECE2D9] px-7 py-8 rounded-lg shadow-md h-max flex flex-col gap-6">
 
-            <p class="flex justify-between text-[16px] border-b pb-3">Tạm tính: <span>...</span></p>
+          <h2 class="font-bold text-[20px] text-[#8A5252] border-b pb-3">
+              ĐƠN HÀNG CỦA BẠN
+          </h2>
 
-            <p class="flex justify-between text-[18px] font-bold text-[#D62929]">
-                Tổng tiền: <span>1,570,000 đ</span>
-            </p>
+          <!-- Items summary -->
+          <div *ngFor="let item of cart" class="flex justify-between text-[16px] text-[#8A5252]">
+              <span class="truncate max-w-[160px]">{{ item.name }}</span>
+              <span>x{{ item.qty }}</span>
+              <span>{{ (item.price * (item.qty || 1)) | number }} đ</span>
+          </div>
 
-            <button class="bg-[#E44945] py-3 rounded-md text-white font-semibold text-[16px] hover:opacity-90 transition">
-                TIẾN HÀNH ĐẶT HÀNG
-            </button>
+          <!-- Total -->
+          <p class="flex justify-between text-[20px] font-bold text-[#D62929] mt-3">
+              Tổng tiền:
+              <span>{{ getTotalPrice() | number }} đ</span>
+          </p>
 
-            <button class="bg-black py-3 rounded-md text-white font-semibold text-[16px] hover:opacity-85 transition">
-                TIẾP TỤC MUA SẮM
-            </button>
+          <!-- Buttons -->
+          <button
+              (click)="goBuy()"
+              class="bg-[#E44945] py-3 rounded-md text-white font-semibold text-[17px] hover:opacity-90 transition">
+              TIẾN HÀNH ĐẶT HÀNG
+          </button>
 
-        </div>
+          <button
+              (click)="goBack()"
+              class="bg-black py-3 rounded-md text-white font-semibold text-[17px] hover:opacity-85 transition">
+              TIẾP TỤC MUA SẮM
+          </button>
 
-    </div>
+      </div>
 
+  </div>
 </div>

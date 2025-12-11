@@ -3,7 +3,7 @@ import { NavbarComponent } from '../../shared/components/navbar/navbar.component
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { ProductService } from '../services/product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { CartservicesService } from '../services/cartservices.service';
 
 @Component({
@@ -20,17 +20,30 @@ export class ProductsComponent {
   constructor(
     private route: ActivatedRoute, 
     private productService: ProductService,
-    private cartService: CartservicesService
+    private cartService: CartservicesService,
+    private router: Router
   ) { }
   ngOnInit() {
-    const productId = this.route.snapshot.paramMap.get('id');
-    this.product = this.productService.getProductById(productId!);
+    this.route.paramMap.subscribe(params => {
+    const id = params.get('id');
+    this.product = this.productService.getProductById(id!);
     console.log(this.product);
+    
+});
   }
   addToCart() {
     this.cartService.addToCart(this.product);
     alert('Sản phẩm đã được thêm vào giỏ hàng!');
     console.log("'Sản phẩm đã được thêm vào giỏ hàng!");
+  }
+  addToFavorite() {
+    if (!this.product) return;
+    this.cartService.addToFavorite(this.product);
+    // tuỳ bạn muốn hiện thông báo:
+    alert('Đã thêm vào yêu thích');
+  }
+  buyNow() {
+    this.router.navigate(['/products-detail']);
   }
   @ViewChild('carousel') carousel: any;
 

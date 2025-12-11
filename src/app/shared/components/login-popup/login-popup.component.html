@@ -1,0 +1,85 @@
+<!-- OVERLAY -->
+<div 
+  class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
+  (click)="close()">
+</div>
+
+<!-- POPUP -->
+<div 
+  class="fixed inset-y-0 right-0 w-full max-w-md bg-white rounded-l-3xl p-8 z-50">
+  
+  <div 
+    class=""
+    (click)="$event.stopPropagation()">
+
+    <!-- NÚT ĐÓNG -->
+    <button 
+      class="absolute top-4 right-4 text-2xl"
+      (click)="close()">
+      ✕
+    </button>
+
+    <!-- TIÊU ĐỀ -->
+    <h2 class="text-center text-[#936B6B] text-2xl font-semibold mb-6">
+      ĐĂNG NHẬP
+    </h2>
+
+    <!-- INPUT USERNAME -->
+    <input 
+      type="text"
+      placeholder="Tên đăng nhập"
+      class="w-full bg-[#F7EBE4] px-5 py-4 rounded-xl placeholder:text-gray-600 mb-4 outline-none"
+    />
+
+    <!-- INPUT PASSWORD -->
+    <div class="relative">
+      <input
+        type="{{ showPassword ? 'text' : 'password' }}"
+        placeholder="Mật khẩu"
+        class="w-full bg-[#F7EBE4] px-5 py-4 rounded-xl placeholder:text-gray-600 outline-none"
+      />
+
+      <button 
+        class="absolute right-4 top-1/2 -translate-y-1/2"
+        (click)="togglePassword()">
+        👁️
+      </button>
+    </div>
+
+    <!-- LINKS -->
+    <div class="flex justify-between text-sm mt-3 mb-5">
+      <a class="cursor-pointer">Quên mật khẩu</a>
+      <a class="cursor-pointer">Tạo tài khoản</a>
+    </div>
+
+    <!-- BUTTON LOGIN -->
+    <button
+      class="w-full bg-[#F7EBE4] text-[#936B6B] font-medium text-lg py-3 rounded-xl mb-4">
+      Đăng nhập
+    </button>
+
+    <p class="text-center text-gray-700 mb-3">hoặc đăng nhập với</p>
+
+    <!-- SOCIAL ROW -->
+    <div class="flex items-center justify-between gap-3 mb-4">
+      <button class="flex items-center gap-3 bg-[#F7EBE4] px-5 py-3 rounded-2xl w-1/2 justify-center">
+        <img src="assets/icon/gmail.png" class="w-6" />
+        Gmail
+      </button>
+
+      <button class="flex items-center gap-3 bg-[#F7EBE4] px-5 py-3 rounded-2xl w-1/2 justify-center">
+        <img src="assets/icon/facebook.png" class="w-6" />
+        Facebook
+      </button>
+    </div>
+
+    <!-- INSTAGRAM BUTTON -->
+    <button 
+      class="flex items-center gap-3 bg-[#F7EBE4] px-5 py-3 rounded-2xl w-full justify-center">
+      <img src="assets/icon/instagram.png" class="w-6">
+      Instagram
+    </button>
+
+  </div>
+</div>
+

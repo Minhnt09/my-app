@@ -1,20 +1,26 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavbarComponent } from '../../shared/components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { RouterLink, RouterModule } from "@angular/router";
 import { HighlightProductsComponent } from '../../shared/components/highlight-products/highlight-products.component';
 import { listProduct } from '../../shared/constants/list-product.constants';
+import { ProductCardComponent } from '../../shared/components/product-card/product-card.component';
 
 @Component({
   selector: 'app-sale',
-  imports: [NavbarComponent, CommonModule, FooterComponent, RouterLink, RouterModule, HighlightProductsComponent],
+  imports: [NavbarComponent, 
+            CommonModule, 
+            FooterComponent, 
+            RouterModule, 
+            HighlightProductsComponent,
+          ],
   standalone: true,
   templateUrl: './sale.component.html',
   styleUrl: './sale.component.scss'
 })
 export class SaleComponent {
-  listProduct = listProduct.data.items;
+  products = listProduct.data.items;
   // Biến toggle cho filter panel
   showColor = false;
   showSize = false;

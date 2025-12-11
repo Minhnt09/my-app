@@ -18,98 +18,15 @@
       </div>
       <!-- Product grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        <!-- SẢN PHẨM -->
-        <div class="p-2">
-          <div class="relative">
-            <img src="/assets/img/dress1.png" alt="" class=""/>
-          </div>
-
-          <h4 class="text-center mt-3 font-semibold">Tên sản phẩm</h4>
-
-          <div class="text-center">
-            <span class="text-red-600 font-bold text-lg">500.000đ</span>
-            <span class="line-through text-gray-500 ml-2">750.000đ</span>
-            <div class="text-sm text-gray-500">(20 sản phẩm đã bán)</div>
-          </div>
-        </div>
-        <div class="p-2">
-          <div class="relative">
-            <img src="/assets/img/dress2.png" alt="" class=""/>
-          </div>
-
-          <h4 class="text-center mt-3 font-semibold">Tên sản phẩm</h4>
-
-          <div class="text-center">
-            <span class="text-red-600 font-bold text-lg">500.000đ</span>
-            <span class="line-through text-gray-500 ml-2">750.000đ</span>
-            <div class="text-sm text-gray-500">(20 sản phẩm đã bán)</div>
-          </div>
-        </div>
-        <div class="p-2">
-          <div class="relative">
-            <img src="/assets/img/dress3.png" alt="" class=""/>
-          </div>
-
-          <h4 class="text-center mt-3 font-semibold">Tên sản phẩm</h4>
-
-          <div class="text-center">
-            <span class="text-red-600 font-bold text-lg">500.000đ</span>
-            <span class="line-through text-gray-500 ml-2">750.000đ</span>
-            <div class="text-sm text-gray-500">(20 sản phẩm đã bán)</div>
-          </div>
-        </div>
-        <div class="p-2">
-          <div class="relative">
-            <img src="/assets/img/dress4.png" alt="" class=""/>
-          </div>
-
-          <h4 class="text-center mt-3 font-semibold">Tên sản phẩm</h4>
-
-          <div class="text-center">
-            <span class="text-red-600 font-bold text-lg">500.000đ</span>
-            <span class="line-through text-gray-500 ml-2">750.000đ</span>
-            <div class="text-sm text-gray-500">(20 sản phẩm đã bán)</div>
-          </div>
-        </div>
-        <div class="p-2">
-          <div class="relative">
-            <img src="/assets/img/dress4.png" alt="" class=""/>
-          </div>
-
-          <h4 class="text-center mt-3 font-semibold">Tên sản phẩm</h4>
-
-          <div class="text-center">
-            <span class="text-red-600 font-bold text-lg">500.000đ</span>
-            <span class="line-through text-gray-500 ml-2">750.000đ</span>
-            <div class="text-sm text-gray-500">(20 sản phẩm đã bán)</div>
-          </div>
-        </div>
-        <div class="p-2">
-          <div class="relative">
-            <img src="/assets/img/dress4.png" alt="" class=""/>
-          </div>
-
-          <h4 class="text-center mt-3 font-semibold">Tên sản phẩm</h4>
-
-          <div class="text-center">
-            <span class="text-red-600 font-bold text-lg">500.000đ</span>
-            <span class="line-through text-gray-500 ml-2">750.000đ</span>
-            <div class="text-sm text-gray-500">(20 sản phẩm đã bán)</div>
-          </div>
-        </div>
+        <app-product-card
+          *ngFor="let product of products | slice:6:10"
+          [product]="product"
+        >
+        </app-product-card>
       </div>
     </div>
 
   </div>
-  <!-- BUTTON SCROLL TO TOP
-    <button 
-        *ngIf="showScrollTop"
-        (click)="scrollToTop()"
-        class="fixed bottom-6 right-6 bg-[#8A5252] text-white w-12 h-12 rounded-full 
-                flex items-center justify-center text-xl shadow-xl 
-                hover:bg-[#723f3f] transition-all duration-300 z-50">
-        ↑
-    </button> -->
 </div>
 <app-highlight-products></app-highlight-products>
 <app-footer></app-footer> 

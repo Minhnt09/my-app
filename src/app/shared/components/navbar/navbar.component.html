@@ -46,10 +46,25 @@
 
       <img src="/assets/icon/thongbao1.png" class="w-[30px] cursor-pointer">
 
-      <img src="/assets/icon/user1.png" class="w-[30px] cursor-pointer">
-
-      <img src="/assets/icon/timkiem3.png" class="w-[26px] cursor-pointer">
-
+      <button>
+        <img
+        (click)="openLogin()"
+        src="/assets/icon/user1.png" class="w-[30px]">
+      </button>
+      <app-login-popup
+        *ngIf="showLogin"
+        (closePopup)="closeLogin()"
+      >
+      </app-login-popup>
+      <img
+        (click)="openSearch()"
+        src="/assets/icon/timkiem3.png" class="w-[26px] cursor-pointer">
+      <app-search-popup
+        *ngIf="isSearchOpen"
+        [isSearchOpen]="isSearchOpen"
+        (closeEvent)="closeSearch()"
+      >
+      </app-search-popup>
     </div>
 
     <!-- Mobile Hamburger -->

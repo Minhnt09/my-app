@@ -12,9 +12,12 @@ export class FooterComponent {
   constructor(private router: Router) {
   }
   goAbout() {
-    this.router.navigate(['/about']);
+    this.router.navigate(['/about-us']);
   }
   goNews() {
     this.router.navigate(['/news']);
+  }
+  goReturnPolicy(){
+    this.router.navigate(['/return-policy'])
   }
 }

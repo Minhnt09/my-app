@@ -1,13 +1,17 @@
 import { Component, ViewChild } from '@angular/core';
+import { listProduct } from '../../constants/list-product.constants';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-highlight-products',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './highlight-products.component.html',
   styleUrl: './highlight-products.component.scss'
 })
 export class HighlightProductsComponent {
+  constructor() {    
+  }
   @ViewChild('carousel') carousel: any;
 
   scrollLeft() {
@@ -23,6 +27,5 @@ export class HighlightProductsComponent {
       behavior: 'smooth'
     });
   }
-  showScrollTop = false;
-
+  products = listProduct.data.items;
 }
