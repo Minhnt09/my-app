@@ -14,6 +14,7 @@ import { HighlightProductsComponent } from './shared/components/highlight-produc
 import { ShoppingCartComponent } from './features/shopping-cart/shopping-cart.component';
 import { ProductDetailComponent } from './features/product-detail/product-detail.component';
 import { ReturnPolicyComponent } from './features/return-policy/return-policy.component';
+import { PaymentSuccessComponent } from './features/payment-success/payment-success.component';
 
 export const routes: Routes = [
   {
@@ -80,6 +81,10 @@ export const routes: Routes = [
   {
     path: 'return-policy',
     component: ReturnPolicyComponent
+  },
+  {
+    path: 'payment-success',
+    component: PaymentSuccessComponent
   }
 
 ];
