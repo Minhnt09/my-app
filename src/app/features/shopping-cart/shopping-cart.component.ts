@@ -1,19 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavbarComponent } from '../../shared/components/navbar/navbar.component';
 import { CommonModule, Location } from '@angular/common';
 import { CartservicesService } from '../services/cartservices.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-shopping-cart',
   standalone: true,
   imports: [NavbarComponent, CommonModule],
   templateUrl: './shopping-cart.component.html',
-  styleUrl: './shopping-cart.component.scss'
+  styleUrls: ['./shopping-cart.component.scss']
 })
-export class ShoppingCartComponent {
+export class ShoppingCartComponent implements OnInit, OnDestroy {
   cart: any[] = [];
   product: any;
+  private sub?: Subscription;
+
   constructor(
     private cartService: CartservicesService,
     private location: Location,
@@ -21,12 +24,27 @@ export class ShoppingCartComponent {
   ) { }
 
   ngOnInit() {
-    this.cart = this.cartService.getCartItems() || [];
-    // ensure each item has qty (default 1)
-    this.cart.forEach(item => {
-      if (typeof item.qty !== 'number' || item.qty < 1) item.qty = 1;
-    });
+    // Nếu service có cart$ (BehaviorSubject) thì subscribe để luôn đồng bộ
+    const maybeCart$ = (this.cartService as any).cart$;
+    if (maybeCart$ && typeof maybeCart$.subscribe === 'function') {
+      this.sub = maybeCart$.subscribe((items: any[]) => {
+        this.cart = Array.isArray(items) ? items.map(item => {
+          if (typeof item.qty !== 'number' || item.qty < 1) item.qty = 1;
+          return item;
+        }) : [];
+      });
+    } else {
+      // fallback: lấy một lần từ getCartItems()
+      this.cart = this.cartService.getCartItems() || [];
+      this.cart.forEach(item => {
+        if (typeof item.qty !== 'number' || item.qty < 1) item.qty = 1;
+      });
+    }
     console.log(this.cart);
+  }
+
+  ngOnDestroy() {
+    this.sub?.unsubscribe();
   }
 
   goBack() {
@@ -38,40 +56,94 @@ export class ShoppingCartComponent {
   }
 
   goBuy(){
-    this.router.navigate(['/products-detail'])
+    this.router.navigate(['/products-detail']);
   }
 
   /**
    * Removes an item at index i from cart.
-   * Tries to use common cart service methods if available, otherwise just updates local array.
+   * Prefer calling service methods first (so service persists + emits).
+   * Only mutate local cart as fallback when service offers no API.
    */
   removeItem(index: number) {
     if (index < 0 || index >= this.cart.length) return;
-
-    const removed = this.cart.splice(index, 1)[0];
-
-    // If service exposes a remove method, try to call it
+    const item = this.cart[index];
     const svc: any = this.cartService as any;
-    if (typeof svc.removeCartItem === 'function') {
-      try { svc.removeCartItem(removed); return; } catch { /* ignore */ }
-    }
-    if (typeof svc.removeItem === 'function') {
-      try { svc.removeItem(removed); return; } catch { /* ignore */ }
+
+    // 1) Prefer id-based removal if item has id and service supports it
+    if (item && item.id != null) {
+      if (typeof svc.removeItemById === 'function') {
+        try {
+          const ok = svc.removeItemById(item.id);
+          // some implementations return boolean, others may not; either way we return
+          return;
+        } catch (e) {
+          // ignore and try next
+        }
+      }
+      // older naming possibilities
+      if (typeof svc.removeItem === 'function') {
+        try { svc.removeItem(item.id ?? item); return; } catch {}
+      }
+      if (typeof svc.removeCartItem === 'function') {
+        try { svc.removeCartItem(item.id ?? item); return; } catch {}
+      }
     }
 
-    // Otherwise try to persist whole cart with various common names
+    // 2) Try index-based removal on service
+    if (typeof svc.removeItemByIndex === 'function') {
+      try { svc.removeItemByIndex(index); return; } catch {}
+    }
+
+    // 3) As a last resort, try to set whole cart via API (component builds new array without the item)
+    if (typeof svc.setCartItems === 'function') {
+      try {
+        const newCart = this.cart.slice();
+        newCart.splice(index, 1); // create new array then pass to service
+        svc.setCartItems(newCart);
+        return;
+      } catch {}
+    }
+
+    // 4) Fallback: mutate local and try persist via persistCart()
+    // (We avoid mutating before calling service in earlier steps; this is only fallback.)
+    this.cart.splice(index, 1);
     this.persistCart();
   }
 
   /**
    * Change quantity for item at index by delta (+1 or -1).
+   * Prefer calling service.updateItemQuantity(id, qty) if available.
    */
   changeQuantity(index: number, delta: number) {
     if (index < 0 || index >= this.cart.length) return;
     const item = this.cart[index];
-    const newQty = (item.qty || 1) + delta;
-    if (newQty < 1) return; // don't allow 0 or negative: remove if you want
-    item.qty = newQty;
+    const currentQty = (item.qty && item.qty > 0) ? item.qty : 1;
+    const newQty = currentQty + delta;
+    if (newQty < 1) {
+      // if decreasing below 1, treat as remove
+      this.removeItem(index);
+      return;
+    }
+
+    const svc: any = this.cartService as any;
+    if (item && item.id != null && typeof svc.updateItemQuantity === 'function') {
+      try {
+        svc.updateItemQuantity(item.id, newQty);
+        return;
+      } catch {}
+    }
+
+    // fallback: if service exposes generic updateCart/setCartItems, rebuild and persist
+    if (typeof svc.setCartItems === 'function') {
+      const newCart = this.cart.map((it, idx) => idx === index ? { ...it, qty: newQty } : it);
+      try {
+        svc.setCartItems(newCart);
+        return;
+      } catch {}
+    }
+
+    // last fallback: update local copy and persist
+    this.cart[index] = { ...item, qty: newQty };
     this.persistCart();
   }
 
@@ -88,7 +160,7 @@ export class ShoppingCartComponent {
 
   /**
    * Persist cart to service if the service provides a setter/save function.
-   * This tries a list of commonly named functions and calls the first available.
+   * Tries common function names; otherwise tries to assign svc.cart = this.cart.
    */
   private persistCart() {
     const svc: any = this.cartService as any;
@@ -108,6 +180,10 @@ export class ShoppingCartComponent {
     try {
       if ('cart' in svc) {
         svc.cart = this.cart;
+        // if service provides a public save method name we didn't detect, try to call it:
+        if (typeof svc.save === 'function') {
+          try { svc.save(); } catch {}
+        }
       }
     } catch {}
   }

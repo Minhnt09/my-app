@@ -2,14 +2,14 @@
     <div class="p-6">
 
       <!-- Xem theo -->
-      <h2 class="text-xl font-bold text-[#8A5252] mb-6">Xem theo</h2>
+      <h2 class="text-[26px] font-bold text-[#8A5252] mb-6">Xem theo</h2>
       <!-- Giá -->
       <div class="mt-6">
-        <h3 class="text-lg font-semibold text-[#8A5252]">Giá</h3>
+        <h3 class="text-[26px] font-semibold text-[#8A5252]">Giá</h3>
 
         <input type="range" class="w-full accent-[#8A5252] mt-3">
 
-        <div class="flex justify-between text-[15px] mt-1">
+        <div class="flex justify-between text-[18px] mt-1">
           <span>0</span>
           <span>5.000.000</span>
         </div>
@@ -21,7 +21,7 @@
         <!-- MÀU SẮC -->
         <div>
           <button
-            class="w-full flex items-center justify-between text-[18px] font-medium text-[#8A5252] py-3 px-4 bg-white rounded-lg shadow-sm hover:bg-gray-100"
+            class="w-full flex items-center justify-between text-[20px] font-medium text-[#8A5252] py-3 px-4 bg-white rounded-lg shadow-sm hover:bg-gray-100"
             (click)="togglePanel('color')"
             [attr.aria-expanded]="showColor"
             [attr.aria-controls]="'panel-color'"
@@ -35,17 +35,17 @@
             *ngIf="showColor"
             class="mt-3 ml-3 space-y-2 animate-fade"
           >
-            <label class="flex items-center gap-2 cursor-pointer">
+            <label class="flex items-center gap-2 cursor-pointer text-[18px]">
               <input type="checkbox" class="accent-[#8A5252] w-4 h-4">
               <span>Trắng</span>
             </label>
 
-            <label class="flex items-center gap-2 cursor-pointer">
+            <label class="flex items-center gap-2 cursor-pointer text-[18px]">
               <input type="checkbox" class="accent-[#8A5252] w-4 h-4">
               <span>Đen</span>
             </label>
 
-            <label class="flex items-center gap-2 cursor-pointer">
+            <label class="flex items-center gap-2 cursor-pointer text-[18px]">
               <input type="checkbox" class="accent-[#8A5252] w-4 h-4">
               <span>Đỏ</span>
             </label>
@@ -55,7 +55,7 @@
         <!-- KÍCH THƯỚC -->
         <div>
           <button
-            class="w-full flex items-center justify-between text-[18px] font-medium text-[#8A5252] py-3 px-4 bg-white rounded-lg shadow-sm hover:bg-gray-100"
+            class="w-full flex items-center justify-between text-[20px] font-medium text-[#8A5252] py-3 px-4 bg-white rounded-lg shadow-sm hover:bg-gray-100"
             (click)="togglePanel('size')"
             [attr.aria-expanded]="showSize"
             [attr.aria-controls]="'panel-size'"
@@ -79,7 +79,7 @@
         <!-- FORM DÁNG -->
         <div>
           <button
-            class="w-full flex items-center justify-between text-[18px] font-medium text-[#8A5252] py-3 px-4 bg-white rounded-lg shadow-sm hover:bg-gray-100"
+            class="w-full flex items-center justify-between text-[20px] font-medium text-[#8A5252] py-3 px-4 bg-white rounded-lg shadow-sm hover:bg-gray-100"
             (click)="togglePanel('form')"
             [attr.aria-expanded]="showForm"
             [attr.aria-controls]="'panel-form'"
@@ -93,17 +93,17 @@
             *ngIf="showForm"
             class="mt-3 ml-3 space-y-2 animate-fade"
           >
-            <label class="flex items-center gap-2 cursor-pointer">
+            <label class="flex items-center gap-2 cursor-pointer text-[18px]">
               <input type="checkbox" class="accent-[#8A5252] w-4 h-4">
               <span>Ôm</span>
             </label>
 
-            <label class="flex items-center gap-2 cursor-pointer">
+            <label class="flex items-center gap-2 cursor-pointer text-[18px]">
               <input type="checkbox" class="accent-[#8A5252] w-4 h-4">
               <span>Xòe</span>
             </label>
 
-            <label class="flex items-center gap-2 cursor-pointer">
+            <label class="flex items-center gap-2 cursor-pointer text-[18px]">
               <input type="checkbox" class="accent-[#8A5252] w-4 h-4">
               <span>Suông</span>
             </label>
