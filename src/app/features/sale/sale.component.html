@@ -1,111 +1,129 @@
 <app-navbar></app-navbar>
-<div class="bg-[#F7EBE4] min-h-screen font-[Poppins] px-6 sm:px-16 py-10">
-  <h2 class="text-[#8A5252] text-[34px] font-semibold text-center mb-10">
+
+<div
+  class="bg-[#F7EBE4] min-h-screen font-[Poppins]
+         px-4 sm:px-8 lg:px-16
+         py-6 sm:py-8 lg:py-10"
+>
+  <!-- TITLE -->
+  <h2
+    class="text-[#8A5252]
+           text-[26px] sm:text-[30px] lg:text-[34px]
+           font-semibold text-center mb-6 lg:mb-10"
+  >
     SALE
   </h2>
 
-  <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
-    <!-- KHỐI LỌC SẢN PHẨM -->
-    <div class="p-6">
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-10">
 
-      <!-- Xem theo -->
-      <h2 class="font-bold text-[#8A5252] mb-6 text-[26px]">Xem theo</h2>
+    <!-- ================= FILTER SIDEBAR ================= -->
+    <div class="p-4 sm:p-6">
+
+      <h2 class="font-bold text-[#8A5252] mb-4 text-[22px] lg:text-[26px]">
+        Xem theo
+      </h2>
 
       <!-- Dòng sản phẩm -->
       <div>
-        <h3 class="font-semibold text-[#8A5252] mb-3 text-[26px]">Dòng sản phẩm</h3>
+        <h3 class="font-semibold text-[#8A5252] mb-3 text-[22px] lg:text-[26px]">
+          Dòng sản phẩm
+        </h3>
 
         <div class="flex items-center gap-3 mb-3">
           <input type="checkbox" checked class="accent-[#8A5252] w-4 h-4">
-          <span class="text-[20px]">Đầm</span>
+          <span class="text-[16px] sm:text-[18px] lg:text-[20px]">Đầm</span>
         </div>
 
         <div class="flex items-center gap-3 mb-3">
           <input type="checkbox" class="accent-[#8A5252] w-4 h-4">
-          <span class="text-[20px]">Áo</span>
+          <span class="text-[16px] sm:text-[18px] lg:text-[20px]">Áo</span>
         </div>
 
         <div class="flex items-center gap-3 mb-3">
           <input type="checkbox" class="accent-[#8A5252] w-4 h-4">
-          <span class="text-[20px]">Quần</span>
+          <span class="text-[16px] sm:text-[18px] lg:text-[20px]">Quần</span>
         </div>
 
         <div class="flex items-center gap-3 mb-3">
           <input type="checkbox" class="accent-[#8A5252] w-4 h-4">
-          <span class="text-[20px]">Chân váy</span>
+          <span class="text-[16px] sm:text-[18px] lg:text-[20px]">Chân váy</span>
         </div>
 
         <div class="flex items-center gap-3 mb-3">
           <input type="checkbox" class="accent-[#8A5252] w-4 h-4">
-          <span class="text-[20px]">LookBook</span>
+          <span class="text-[16px] sm:text-[18px] lg:text-[20px]">LookBook</span>
         </div>
       </div>
 
-      <!-- Giá -->
+      <!-- PRICE -->
       <div class="mt-6">
-        <h3 class="text-[26px] font-semibold text-[#8A5252]">Giá</h3>
+        <h3 class="text-[22px] lg:text-[26px] font-semibold text-[#8A5252]">
+          Giá
+        </h3>
 
         <input type="range" class="w-full accent-[#8A5252] mt-3">
 
-        <div class="flex justify-between mt-1">
-          <span class="text-[18px]">0</span>
-          <span class="text-[18px]">5.000.000 VNĐ</span>
+        <div class="flex justify-between mt-1 text-[14px] sm:text-[16px] lg:text-[18px]">
+          <span>0</span>
+          <span>5.000.000 VNĐ</span>
         </div>
       </div>
 
-      <!-- Bộ lọc mở rộng -->
+      <!-- ADVANCED FILTER -->
       <div class="mt-7 space-y-4">
 
-        <!-- MÀU SẮC -->
+        <!-- COLOR -->
         <div>
           <button
-            class="w-full flex items-center justify-between text-[20px] font-medium text-[#8A5252] py-3 px-4 bg-white rounded-lg shadow-sm hover:bg-gray-100"
+            class="w-full flex items-center justify-between
+                   text-[18px] lg:text-[20px]
+                   font-medium text-[#8A5252]
+                   py-2.5 lg:py-3 px-4
+                   bg-white rounded-lg shadow-sm hover:bg-gray-100"
             (click)="togglePanel('color')"
-            [attr.aria-expanded]="showColor"
-            [attr.aria-controls]="'panel-color'"
           >
-            <span class="">Màu sắc</span>
+            <span>Màu sắc</span>
             <span class="text-xl">{{ showColor ? '−' : '+' }}</span>
           </button>
 
           <div
-            id="panel-color"
             *ngIf="showColor"
-            class="mt-3 ml-3 space-y-2 animate-fade"
+            class="mt-3 ml-3 space-y-2 text-[16px] lg:text-[18px]"
           >
-            <label class="flex items-center gap-2 cursor-pointer text-[18px]">
+            <label class="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" class="accent-[#8A5252] w-4 h-4">
               <span>Trắng</span>
             </label>
 
-            <label class="flex items-center gap-2 cursor-pointer text-[18px]">
+            <label class="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" class="accent-[#8A5252] w-4 h-4">
               <span>Đen</span>
             </label>
 
-            <label class="flex items-center gap-2 cursor-pointer text-[18px]">
+            <label class="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" class="accent-[#8A5252] w-4 h-4">
               <span>Đỏ</span>
             </label>
           </div>
         </div>
 
-        <!-- KÍCH THƯỚC -->
+        <!-- SIZE -->
         <div>
           <button
-            class="w-full flex items-center justify-between text-[20px] font-medium text-[#8A5252] py-3 px-4 bg-white rounded-lg shadow-sm hover:bg-gray-100"
+            class="w-full flex items-center justify-between
+                   text-[18px] lg:text-[20px]
+                   font-medium text-[#8A5252]
+                   py-2.5 lg:py-3 px-4
+                   bg-white rounded-lg shadow-sm hover:bg-gray-100"
             (click)="togglePanel('size')"
-            [attr.aria-expanded]="showSize"
-            [attr.aria-controls]="'panel-size'"
           >
             <span>Kích thước</span>
             <span class="text-xl">{{ showSize ? '−' : '+' }}</span>
           </button>
 
           <div
-            id="panel-size"
             *ngIf="showSize"
-            class="mt-3 ml-3 flex flex-wrap gap-3 animate-fade"
+            class="mt-3 ml-3 flex flex-wrap gap-2 text-[14px] lg:text-[16px]"
           >
             <span class="px-3 py-1 border rounded-lg bg-white">S</span>
             <span class="px-3 py-1 border rounded-lg bg-white">M</span>
@@ -114,34 +132,35 @@
           </div>
         </div>
 
-        <!-- FORM DÁNG -->
+        <!-- FORM -->
         <div>
           <button
-            class="w-full flex items-center justify-between text-[20px] font-medium text-[#8A5252] py-3 px-4 bg-white rounded-lg shadow-sm hover:bg-gray-100"
+            class="w-full flex items-center justify-between
+                   text-[18px] lg:text-[20px]
+                   font-medium text-[#8A5252]
+                   py-2.5 lg:py-3 px-4
+                   bg-white rounded-lg shadow-sm hover:bg-gray-100"
             (click)="togglePanel('form')"
-            [attr.aria-expanded]="showForm"
-            [attr.aria-controls]="'panel-form'"
           >
             <span>Form dáng</span>
             <span class="text-xl">{{ showForm ? '−' : '+' }}</span>
           </button>
 
           <div
-            id="panel-form"
             *ngIf="showForm"
-            class="mt-3 ml-3 space-y-2 animate-fade"
+            class="mt-3 ml-3 space-y-2 text-[16px] lg:text-[18px]"
           >
-            <label class="flex items-center gap-2 cursor-pointer text-[18px]">
+            <label class="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" class="accent-[#8A5252] w-4 h-4">
               <span>Ôm</span>
             </label>
 
-            <label class="flex items-center gap-2 cursor-pointer text-[18px]">
+            <label class="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" class="accent-[#8A5252] w-4 h-4">
               <span>Xòe</span>
             </label>
 
-            <label class="flex items-center gap-2 cursor-pointer text-[18px]">
+            <label class="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" class="accent-[#8A5252] w-4 h-4">
               <span>Suông</span>
             </label>
@@ -151,46 +170,64 @@
       </div>
     </div>
 
-
-    <!-- ================= PRODUCT LIST ================ -->
+    <!-- ================= PRODUCT LIST ================= -->
     <div class="lg:col-span-3">
 
-      <!-- Sort dropdown -->
-      <div class="flex justify-end mb-6">
-        <select class="px-4 py-2 border rounded-md">
+      <!-- SORT -->
+      <div class="flex justify-end mb-4 lg:mb-6">
+        <select class="px-3 py-2 border rounded-md text-sm lg:text-base">
           <option>Mới nhất</option>
           <option>Giá tăng dần</option>
           <option>Giá giảm dần</option>
         </select>
       </div>
 
-      <!-- Product grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      <!-- PRODUCTS -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
 
-        <!-- SẢN PHẨM -->
-        <div class="p-2 hover:scale-105 transition" *ngFor="let product of products | slice:0:6">
+        <div
+          class="p-2 transition hover:scale-[1.02] lg:hover:scale-105"
+          *ngFor="let product of products | slice:0:6"
+        >
           <div class="relative">
-            <span class="absolute left-2 top-2 bg-red-500 text-white text-xs px-2 py-1 rounded">-30%</span>
+            <span
+              class="absolute left-2 top-2 bg-red-500 text-white text-xs px-2 py-1 rounded"
+            >
+              -30%
+            </span>
+
             <img
               [routerLink]="['/products', product.id]"
-              [src]="product.image" alt="" class="cursor-pointer"/>
+              [src]="product.image"
+              class="w-full object-cover cursor-pointer"
+              alt=""
+            />
           </div>
 
           <h4
             [routerLink]="['/products', product.id]"
-            class="text-center mt-3 font-semibold cursor-pointer">{{product.name}}</h4>
+            class="text-center mt-3 font-semibold
+                   text-[16px] lg:text-[18px]
+                   cursor-pointer"
+          >
+            {{ product.name }}
+          </h4>
 
           <div class="text-center">
-            <span class="text-red-600 font-bold text-lg">{{product.price | number}} VNĐ</span>
+            <span class="text-red-600 font-bold text-base lg:text-lg">
+              {{ product.price | number }} VNĐ
+            </span>
             <span class="line-through text-gray-500 ml-2">750.000đ</span>
-            <div class="text-sm text-gray-500">({{product.stock}} sản phẩm đã bán)</div>
+            <div class="text-sm text-gray-500">
+              ({{ product.stock }} sản phẩm đã bán)
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
 </div>
+
 <app-highlight-products></app-highlight-products>
 <app-footer></app-footer>
-
-

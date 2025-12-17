@@ -1,4 +1,4 @@
-<div class="bg-[#FBF1E8] font-[Poppins] px-4 sm:px-8 md:px-16 py-8 md:py-10">
+<div class="bg-[#F7EBE4] px-2 sm:px-8 md:px-16 py-8 md:py-10">
 
   <!-- HEADER -->
   <div class="flex justify-between items-center mb-4 md:mb-6">
@@ -28,63 +28,66 @@
   <!-- CAROUSEL -->
   <div
     #carousel
-    class="flex gap-4 md:gap-6
-           overflow-x-auto scroll-smooth pb-4
-           snap-x snap-mandatory">
+    class="
+      flex gap-3 md:gap-6
+      overflow-x-auto scroll-smooth pb-4
+      snap-x snap-mandatory
+    "
+  >
 
     <div
       *ngFor="let product of products"
       class="
-        min-w-[85%] sm:min-w-[45%] md:min-w-[25%]
-        max-w-[85%] sm:max-w-[45%] md:max-w-[25%]
+        min-w-[48%] max-w-[48%]
+        sm:min-w-[46%] sm:max-w-[46%]
+        md:min-w-[25%] md:max-w-[25%]
         snap-start
-      ">
+      "
+    >
 
       <!-- IMAGE -->
       <img
+        [routerLink]="['/products', product.id]"
         [src]="product.image"
         class="
           w-full
-          rounded-xl shadow
-          md:w-auto md:h-auto md:object-contain
-        ">
+          aspect-[3/4]
+          object-cover
+          rounded-lg
+          cursor-pointer
+          hover:scale-105 transition duration-300
+        "
+        alt=""
+      >
 
       <!-- NAME -->
       <p
-        class="text-[16px] sm:text-[18px] md:text-[20px]
-               font-semibold mt-3 line-clamp-2">
+        [routerLink]="['/products', product.id]"
+        class="
+          text-[14px] sm:text-[16px] md:text-[22px]
+          font-medium md:font-semibold
+          mt-2 line-clamp-2
+          cursor-pointer
+        "
+      >
         {{ product.name }}
       </p>
 
-      <!-- COLORS + FAVORITE -->
-      <div class="flex items-center gap-3 mt-2">
-        <div class="w-5 h-5 sm:w-6 sm:h-6 bg-white border rounded-full"></div>
-        <div class="w-5 h-5 sm:w-6 sm:h-6 bg-gray-300 border rounded-full"></div>
-        <div
-          class="text-[22px] sm:text-[26px] md:text-[28px]
-                 text-red-500 cursor-pointer">
-          ♥
-        </div>
-      </div>
-
       <!-- PRICE -->
       <p
-        class="text-[16px] sm:text-[18px] md:text-[20px]
-               text-red-600 font-bold mt-2">
+        class="text-[16px] md:text-[20px]
+               text-red-600 font-bold mt-1"
+      >
         {{ product.price | number }} VNĐ
       </p>
 
-      <!-- RATING -->
-      <div
-        class="flex items-center gap-1 mt-1
-               text-yellow-400 text-[18px] sm:text-[20px] md:text-[22px]">
-        ★ ★ ★ ★ ☆
+      <!-- RATING + SOLD -->
+      <div class="flex items-center justify-between mt-1 text-[12px] md:text-[14px]">
+        <div class="text-yellow-400">★★★★☆</div>
+        <span class="text-gray-500">
+          ( {{ product.stock }} đã bán )
+        </span>
       </div>
-
-      <!-- SOLD -->
-      <p class="text-[12px] sm:text-[13px] md:text-[14px] mt-1">
-        ( {{ product.stock }} đã bán )
-      </p>
 
     </div>
 

@@ -18,14 +18,14 @@
 
     <!-- RIGHT – Icons (Desktop) -->
     <div class="hidden md:flex items-center gap-6">
-      <img (click)="goFavorite()" src="/assets/icon/heart1.png" class="icon">
-      <img (click)="goCart()" src="/assets/icon/giohang.png" class="icon">
-      <img src="/assets/icon/thongbao1.png" class="icon">
+      <img (click)="goFavorite()" src="/assets/icon/heart1.png" class="w-[36px] cursor-pointer">
+      <img (click)="goCart()" src="/assets/icon/giohang.png" class="w-[36px] cursor-pointer">
+      <img src="/assets/icon/thongbao1.png" class="w-[34px] cursor-pointer">
 
-      <img (click)="openLogin()" src="/assets/icon/user1.png" class="icon">
+      <img (click)="openLogin()" src="/assets/icon/user1.png" class="w-[36px] cursor-pointer">
       <app-login-popup *ngIf="showLogin" (closePopup)="closeLogin()"></app-login-popup>
 
-      <img (click)="openSearch()" src="/assets/icon/timkiem3.png" class="w-[26px] cursor-pointer">
+      <img (click)="openSearch()" src="/assets/icon/timkiem3.png" class="w-[28px] cursor-pointer">
       <app-search-popup
         *ngIf="isSearchOpen"
         [isSearchOpen]="isSearchOpen"

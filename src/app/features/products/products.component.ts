@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { ProductService } from '../services/product.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { CartservicesService } from '../services/cartservices.service';
+import { HighlightProductsComponent } from "../../shared/components/highlight-products/highlight-products.component";
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, CommonModule],
+  imports: [NavbarComponent, FooterComponent, CommonModule, HighlightProductsComponent],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
