@@ -1,18 +1,66 @@
 <app-navbar></app-navbar>
-<div class="bg-[#FBF1E8] text-center text-[40px] text-[#8A5252] font-[Poppins] font-semibold p-2">
+
+<!-- TITLE -->
+<div
+  class="bg-[#FBF1E8] text-center
+         text-[22px] sm:text-[28px] md:text-[40px]
+         text-[#8A5252] font-semibold py-4">
   BỘ SƯU TẬP
 </div>
-<div class="bg-[#FBF1E8] grid grid-cols-2">
-  <img src="/assets/img/banner1.png" alt="">
-  <img src="/assets/img/banner2.png" alt="">
-  <img src="/assets/img/banner3.png" alt="">
-  <img src="/assets/img/banner4.png" alt="">
+
+<!-- ===== MOBILE SLIDER ===== -->
+<div class="bg-[#FBF1E8] md:hidden overflow-hidden">
+  <div
+    class="flex overflow-x-auto scroll-smooth
+           snap-x snap-mandatory
+           scrollbar-hide">
+
+    <div class="min-w-full snap-center">
+      <img
+        src="/assets/img/banner1.png"
+        class="w-full h-[260px] object-cover"
+      />
+    </div>
+
+    <div class="min-w-full snap-center">
+      <img
+        src="/assets/img/banner2.png"
+        class="w-full h-[260px] object-cover"
+      />
+    </div>
+
+    <div class="min-w-full snap-center">
+      <img
+        src="/assets/img/banner3.png"
+        class="w-full h-[260px] object-cover"
+      />
+    </div>
+
+    <div class="min-w-full snap-center">
+      <img
+        src="/assets/img/banner4.png"
+        class="w-full h-[260px] object-cover"
+      />
+    </div>
+
+  </div>
 </div>
+
+
+<!-- ===== DESKTOP / TABLET GRID ===== -->
+<div class="bg-[#FBF1E8] hidden md:block px-6 md:px-10 lg:px-16 pb-6">
+  <div
+    class="grid grid-cols-2 gap-6 mx-auto">
+
+    <img src="/assets/img/banner1.png" class="object-cover hover:scale-105 transition duration-300 rounded-lg">
+    <img src="/assets/img/banner2.png" class="object-cover hover:scale-105 transition duration-300 rounded-lg">
+    <img src="/assets/img/banner3.png" class="object-cover hover:scale-105 transition duration-300 rounded-lg">
+    <img src="/assets/img/banner4.png" class="object-cover hover:scale-105 transition duration-300 rounded-lg">
+
+  </div>
+</div>
+
+<!-- PRODUCTS -->
 <app-highlight-products></app-highlight-products>
+
 <app-footer></app-footer>
-
-
-
-
-
-

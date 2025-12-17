@@ -1,44 +1,81 @@
 <!-- FOOTER -->
-<div class="bg-[#F7EBE4] pb-5">
-  <p class="text-center text-[48px] text-[#8A5252] border-b border-black">THEO DÕI CHÚNG TÔI</p>
+<div class="bg-[#FBF1E8] pb-4 sm:pb-5">
+  <p
+    class="text-center font-semibold
+           text-[22px] sm:text-[32px] md:text-[48px]
+           text-[#8A5252]">
+    THEO DÕI CHÚNG TÔI
+  </p>
 </div>
-<img src="/assets/img/footer1.png" alt="" class="w-full">
+
+<img
+  src="/assets/img/footer1.png"
+  alt=""
+  class="w-full object-cover max-h-[220px] sm:max-h-[300px] md:max-h-none">
+
 <div class="bg-[#D9C0AA]">
-  <div class="mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 px-6 py-10">
+  <div
+    class="mx-auto grid
+           grid-cols-1 sm:grid-cols-2 md:grid-cols-4
+           gap-6 sm:gap-8 md:gap-10
+           px-4 sm:px-6 py-8 md:py-10">
 
     <!-- Cột 1 -->
-    <div class="">
-      <img src="/assets/icon/logo1.png" alt="" class="w-[30%]" />
+    <div>
+      <img src="/assets/icon/logo1.png" alt="" class="w-[120px] sm:w-[30%] mb-3" />
+
       <button
         (click)="goAbout()"
-        class="font-medium text-[24px] text-[#522222] mb-2">Về chúng tôi</button><br>
-      <button 
+        class="block font-medium
+               text-[16px] sm:text-[20px] md:text-[24px]
+               text-[#522222] mb-2">
+        Về chúng tôi
+      </button>
+
+      <button
         (click)="goNews()"
-        class="font-medium text-[24px] text-[#522222] mb-2">Tin tức</button><br>
-      <button class="font-medium text-[24px] text-[#522222] mb-2">Cửa hàng</button>
+        class="block font-medium
+               text-[16px] sm:text-[20px] md:text-[24px]
+               text-[#522222] mb-2">
+        Tin tức
+      </button>
+
+      <button
+        class="block font-medium
+               text-[16px] sm:text-[20px] md:text-[24px]
+               text-[#522222] mb-2">
+        Cửa hàng
+      </button>
     </div>
 
     <!-- Cột 2 -->
     <div>
-      <p class="text-[26px] font-bold mb-4">LIÊN KẾT VỚI CHÚNG TÔI</p>
+      <p
+        class="text-[18px] sm:text-[22px] md:text-[26px]
+               font-bold mb-3 sm:mb-4">
+        LIÊN KẾT VỚI CHÚNG TÔI
+      </p>
 
-      <div class="flex items-center gap-3 mb-3 cursor-pointer">
-        <img src="/assets/icon/facebook.png" class="w-6 h-6" />
+      <div class="flex items-center gap-3 mb-2 cursor-pointer">
+        <img src="/assets/icon/facebook.png" class="w-5 h-5 sm:w-6 sm:h-6" />
         <a
           href="https://www.facebook.com/Nguyenmsut"
           target="_blank"
-          class="font-medium text-[24px] text-[#522222] mb-2"
-        >
+          class="font-medium
+                 text-[16px] sm:text-[20px] md:text-[24px]
+                 text-[#522222]">
           Facebook
         </a>
       </div>
-      <div class="flex items-center gap-3 mb-3 cursor-pointer">
-        <img src="/assets/icon/instagram.png" class="w-6 h-6" />
+
+      <div class="flex items-center gap-3 mb-2 cursor-pointer">
+        <img src="/assets/icon/instagram.png" class="w-5 h-5 sm:w-6 sm:h-6" />
         <a
           href="https://www.facebook.com/Nguyenmsut"
           target="_blank"
-          class="font-medium text-[24px] text-[#522222] mb-2"
-        >
+          class="font-medium
+                 text-[16px] sm:text-[20px] md:text-[24px]
+                 text-[#522222]">
           Instagram
         </a>
       </div>
@@ -46,41 +83,65 @@
 
     <!-- Cột 3 -->
     <div>
-      <p class="text-[26px] font-bold mb-4">CHÍNH SÁCH BÁN HÀNG</p>
-      <button class="font-medium text-[24px] text-[#522222] mb-2">Chính sách vận chuyển</button><br>
+      <p
+        class="text-[18px] sm:text-[22px] md:text-[26px]
+               font-bold mb-3 sm:mb-4">
+        CHÍNH SÁCH BÁN HÀNG
+      </p>
+
+      <button
+        class="block font-medium
+               text-[16px] sm:text-[20px] md:text-[24px]
+               text-[#522222] mb-2">
+        Chính sách vận chuyển
+      </button>
+
       <button
         (click)="goReturnPolicy()"
-        class="font-medium text-[24px] text-[#522222] mb-2">Chính sách đổi trả</button><br>
-      <button class="font-medium text-[24px] text-[#522222] mb-2">Hướng dẫn chọn size</button>
+        class="block font-medium
+               text-[16px] sm:text-[20px] md:text-[24px]
+               text-[#522222] mb-2">
+        Chính sách đổi trả
+      </button>
+
+      <button
+        class="block font-medium
+               text-[16px] sm:text-[20px] md:text-[24px]
+               text-[#522222] mb-2">
+        Hướng dẫn chọn size
+      </button>
     </div>
 
     <!-- Cột 4 -->
     <div>
-      <p class="text-[26px] font-bold mb-4">ĐĂNG KÝ NHẬN TIN</p>
-      <div class="flex items-center bg-white rounded-2xl mb-3">
+      <p
+        class="text-[18px] sm:text-[22px] md:text-[26px]
+               font-bold mb-3 sm:mb-4">
+        ĐĂNG KÝ NHẬN TIN
+      </p>
+
+      <div
+        class="flex items-center bg-white
+               rounded-xl sm:rounded-2xl
+               mb-3 p-1">
         <input
           type="text"
           placeholder="Nhập email của bạn"
-          class="outline-none flex-1"
+          class="outline-none flex-1 px-2 text-[14px] sm:text-[16px]"
         />
-        <button class="bg-black text-white px-4 py-2 rounded-lg">
+        <button
+          class="bg-black text-white
+                 px-3 sm:px-4 py-2
+                 rounded-lg text-[14px] sm:text-[16px]">
           ĐĂNG KÝ
         </button>
       </div>
 
-      <p class="text-sm leading-5">
-        Để cập nhật những sản phẩm mới, nhận thông tin ưu đãi đặc biệt và thông tin giảm giá khác.
+      <p class="text-[12px] sm:text-sm leading-5">
+        Để cập nhật những sản phẩm mới, nhận thông tin ưu đãi đặc biệt
+        và thông tin giảm giá khác.
       </p>
     </div>
 
   </div>
-  <!-- BUTTON SCROLL TO TOP
-  <button 
-    *ngIf="showScrollTop"
-    (click)="scrollToTop()"
-    class="fixed bottom-6 right-6 bg-[#8A5252] text-white w-12 h-12 rounded-full 
-            flex items-center justify-center text-xl shadow-xl 
-            hover:bg-[#723f3f] transition-all duration-300 z-50">
-    ↑
-  </button> -->
 </div>

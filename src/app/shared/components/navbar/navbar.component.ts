@@ -18,6 +18,7 @@ import { SearchPopupComponent } from '../search-popup/search-popup.component';
 })
 export class NavbarComponent {
   isMenuOpen: boolean = false;  // mặc định đóng menu
+  isMobileMenuOpen = false;
   showLogin = false;
   isSearchOpen = false;
   constructor(private router: Router) {
@@ -57,13 +58,13 @@ export class NavbarComponent {
   goStore() {
     this.router.navigate(['/store']);
   }
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-  }
   goFavorite() {
     this.router.navigate(['/favorite']);
   }
   goCart() {
     this.router.navigate(['/cart']);
   }
+  toggleMenu() {
+  this.isMobileMenuOpen = !this.isMobileMenuOpen;
+}
 }

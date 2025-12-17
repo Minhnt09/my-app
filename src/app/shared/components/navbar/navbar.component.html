@@ -1,4 +1,4 @@
-<nav class="fixed top-0 left-0 w-full h-[80px] bg-[#E8DCD1] shadow-sm z-50 font-[poppins]">
+<nav class="fixed top-0 left-0 w-full h-[80px] bg-[#E8DCD1] shadow-sm z-50">
   <div class="max-w-[1600px] mx-auto h-full px-6 flex items-center justify-between">
 
     <!-- LEFT – Logo -->
@@ -6,75 +6,80 @@
       <img src="/assets/icon/logo1.png" alt="logo" class="w-[70px]">
     </a>
 
-    <!-- CENTER – Menu -->
+    <!-- CENTER – Menu (Desktop) -->
     <div class="hidden md:flex items-center gap-10 text-[#8A5252]">
-
-      <a (click)="goSale()" class="relative hover:after:w-full after:content-[''] after:block after:w-0 after:h-[2px] after:bg-[#8A5252] after:transition-all duration-300 text-[26px] font-semibold">
-        SALE
-      </a>
-
-      <a (click)="goDress()" class="relative hover:after:w-full after:content-[''] after:block after:w-0 after:h-[2px] after:bg-[#8A5252] after:transition-all duration-300 text-[26px] font-semibold">
-        ĐẦM
-      </a>
-
-      <a (click)="goShirt()" class="relative hover:after:w-full after:content-[''] after:block after:w-0 after:h-[2px] after:bg-[#8A5252] after:transition-all duration-300 text-[26px] font-semibold">
-        ÁO
-      </a>
-
-      <a (click)="goTrousers()" class="relative hover:after:w-full after:content-[''] after:block after:w-0 after:h-[2px] after:bg-[#8A5252] after:transition-all duration-300 text-[26px] font-semibold">
-        QUẦN
-      </a>
-
-      <a (click)="goSkirt()" class="relative hover:after:w-full after:content-[''] after:block after:w-0 after:h-[2px] after:bg-[#8A5252] after:transition-all duration-300 text-[26px] font-semibold">
-        CHÂN VÁY
-      </a>
-
-      <a (click)="goStore()" class="relative hover:after:w-full after:content-[''] after:block after:w-0 after:h-[2px] after:bg-[#8A5252] after:transition-all duration-300 text-[26px] font-semibold">
-        LOOKBOOK
-      </a>
-
+      <a (click)="goSale()" class="relative text-[26px] font-semibold cursor-pointer">SALE</a>
+      <a (click)="goDress()" class="relative text-[26px] font-semibold cursor-pointer">ĐẦM</a>
+      <a (click)="goShirt()" class="relative text-[26px] font-semibold cursor-pointer">ÁO</a>
+      <a (click)="goTrousers()" class="relative text-[26px] font-semibold cursor-pointer">QUẦN</a>
+      <a (click)="goSkirt()" class="relative text-[26px] font-semibold cursor-pointer">CHÂN VÁY</a>
+      <a (click)="goStore()" class="relative text-[26px] font-semibold cursor-pointer">LOOKBOOK</a>
     </div>
 
-    <!-- RIGHT – Icons (gộp 1 nhóm, căn thẳng hàng đẹp hơn) -->
+    <!-- RIGHT – Icons (Desktop) -->
     <div class="hidden md:flex items-center gap-6">
+      <img (click)="goFavorite()" src="/assets/icon/heart1.png" class="icon">
+      <img (click)="goCart()" src="/assets/icon/giohang.png" class="icon">
+      <img src="/assets/icon/thongbao1.png" class="icon">
 
-      <img (click)="goFavorite()" src="/assets/icon/heart1.png"
-           class="w-[30px] cursor-pointer">
+      <img (click)="openLogin()" src="/assets/icon/user1.png" class="icon">
+      <app-login-popup *ngIf="showLogin" (closePopup)="closeLogin()"></app-login-popup>
 
-      <img (click)="goCart()" src="/assets/icon/giohang.png"
-           class="w-[30px] cursor-pointer">
-
-      <img src="/assets/icon/thongbao1.png" class="w-[30px] cursor-pointer">
-
-      <button>
-        <img
-        (click)="openLogin()"
-        src="/assets/icon/user1.png" class="w-[30px]">
-      </button>
-      <app-login-popup
-        *ngIf="showLogin"
-        (closePopup)="closeLogin()"
-      >
-      </app-login-popup>
-      <img
-        (click)="openSearch()"
-        src="/assets/icon/timkiem3.png" class="w-[26px] cursor-pointer">
+      <img (click)="openSearch()" src="/assets/icon/timkiem3.png" class="w-[26px] cursor-pointer">
       <app-search-popup
         *ngIf="isSearchOpen"
         [isSearchOpen]="isSearchOpen"
-        (closeEvent)="closeSearch()"
-      >
+        (closeEvent)="closeSearch()">
       </app-search-popup>
     </div>
 
     <!-- Mobile Hamburger -->
     <div class="md:hidden flex items-center">
-      <button class="text-gray-700 text-3xl focus:outline-none" (click)="toggleMenu()">
-        ☰
-      </button>
+      <button class="text-3xl" (click)="toggleMenu()">☰</button>
     </div>
-
   </div>
 </nav>
 
+<!-- Spacer -->
 <div class="h-[80px]"></div>
+
+<!-- MOBILE OVERLAY -->
+<div
+  *ngIf="isMobileMenuOpen"
+  class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
+  (click)="toggleMenu()">
+</div>
+
+<!-- MOBILE MENU -->
+<div
+  *ngIf="isMobileMenuOpen"
+  class="fixed top-0 right-0 w-[80%] max-w-sm h-full bg-[#E8DCD1] z-50 p-6 flex flex-col gap-6 animate-slide-in">
+
+  <!-- HEADER
+  <div class="flex items-center justify-between">
+    <button class="text-3xl" (click)="toggleMenu()">✕</button>
+  </div> -->
+
+  <!-- MENU -->
+  <div class="flex flex-col gap-5 text-[#8A5252] text-[20px] font-semibold">
+    <div class="flex items-center justify-between">
+      <a (click)="goSale(); toggleMenu()">SALE</a>
+      <button class="text-3xl" (click)="toggleMenu()">✕</button>
+    </div>
+    <a (click)="goDress(); toggleMenu()">ĐẦM</a>
+    <a (click)="goShirt(); toggleMenu()">ÁO</a>
+    <a (click)="goTrousers(); toggleMenu()">QUẦN</a>
+    <a (click)="goSkirt(); toggleMenu()">CHÂN VÁY</a>
+    <a (click)="goStore(); toggleMenu()">LOOKBOOK</a>
+  </div>
+
+  <div class="border-t border-[#8A5252]/30 my-2"></div>
+
+  <!-- ICONS -->
+  <div class="flex items-center gap-6">
+    <img (click)="goFavorite()" src="/assets/icon/heart1.png" class="w-[28px]">
+    <img (click)="goCart()" src="/assets/icon/giohang.png" class="w-[28px]">
+    <img (click)="openSearch()" src="/assets/icon/timkiem3.png" class="w-[26px]">
+    <img (click)="openLogin()" src="/assets/icon/user1.png" class="w-[28px]">
+  </div>
+</div>
