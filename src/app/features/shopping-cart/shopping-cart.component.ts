@@ -4,11 +4,12 @@ import { CommonModule, Location } from '@angular/common';
 import { CartservicesService } from '../services/cartservices.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { FooterComponent } from "../../shared/components/footer/footer.component";
 
 @Component({
   selector: 'app-shopping-cart',
   standalone: true,
-  imports: [NavbarComponent, CommonModule],
+  imports: [NavbarComponent, CommonModule, FooterComponent],
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.scss']
 })
