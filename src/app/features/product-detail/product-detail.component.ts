@@ -1,27 +1,14 @@
-import {
-  Component,
-  Inject,
-  Input,
-  PLATFORM_ID,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
+import { Component, Inject, Input, PLATFORM_ID, TemplateRef, ViewChild, } from '@angular/core';
 import { NavbarComponent } from '../../shared/components/navbar/navbar.component';
 import { CommonModule, Location } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators, } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { CartservicesService } from '../services/cartservices.service';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { CheckoutService } from '../services/checkout.service';
 
 
 @Component({
@@ -54,9 +41,10 @@ export class ProductDetailComponent {
 
   constructor(
     private router: Router,
-    private fb: FormBuilder,          // ✅ ĐÚNG
+    private fb: FormBuilder,
     private location: Location,
     private cartService: CartservicesService,
+    private checkoutService: CheckoutService,
     private modalService: NzModalService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
@@ -64,13 +52,21 @@ export class ProductDetailComponent {
   ngOnInit() {
     this.initializeForm();
 
-    this.cart = this.cartService.getCartItems();
+    const checkoutProducts = this.checkoutService.getProducts();
+
+    if (checkoutProducts.length > 0) {
+      // 👉 ĐI TỪ MUA NGAY
+      this.cart = checkoutProducts;
+    } else {
+      // 👉 ĐI TỪ GIỎ HÀNG
+      this.cart = this.cartService.getCartItems();
+    }
+    this.checkoutService.clear();
 
     const now = Date.now();
     this.countdown =
       now + this.countdownDurationInMinutes * 60 * 1000;
   }
-
   initializeForm(): void {
     this.form = this.fb.group({
       fullName: ['', Validators.required],

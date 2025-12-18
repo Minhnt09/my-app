@@ -49,11 +49,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   goBack() {
-    if (window.history.length > 1) {
-      this.location.back();
-    } else {
-      this.router.navigate(['/products']);
-    }
+      this.router.navigate(['/home']);
   }
 
   goBuy(){
