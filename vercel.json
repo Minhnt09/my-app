@@ -1,5 +1,4 @@
 {
-  "buildCommand": "ng build",
   "outputDirectory": "dist/my-app",
   "rewrites": [
     {
