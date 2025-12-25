@@ -1,0 +1,119 @@
+<app-navbar></app-navbar>
+
+<div class="bg-[#F7EBE4] text-[#6b4a4a]">
+  <div class="max-w-[1100px] mx-auto px-4 py-10">
+
+    <!-- Title -->
+    <div class="text-center mb-8">
+      <p class=" text-[#8A5252] text-[30px] md:text-[40px] font-semibold">
+        HƯỚNG DẪN CHỌN SIZE
+      </p>
+      <div class="mx-auto h-[2px] w-96 bg-[#8A5252]/60"></div>
+    </div>
+
+    <!-- Layout: left table + right dropdown -->
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-6 items-start">
+
+      <!-- LEFT: Size table card -->
+      <section class="bg-[#F7EBE4] border border-[#AE8989]/50">
+        <div class="px-6 pt-6 pb-4 text-center">
+          <p class="text-[#6b4a4a] text-[22px] md:text-[28px] font-semibold">ZAMY</p>
+          <p class="text-[#6b4a4a] text-[18px] md:text-[22px] font-semibold mt-1">
+            BẢNG THÔNG SỐ CHỌN SIZE
+          </p>
+        </div>
+
+        <div class="px-4 pb-6">
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse text-center">
+              <thead>
+                <tr class="bg-[#F7EBE4]">
+                  <th class="border border-[#AE8989]/60 px-3 py-3 text-[13px] md:text-[14px] font-semibold">
+                    SIZE
+                  </th>
+                  <th class="border border-[#AE8989]/60 px-3 py-3 text-[13px] md:text-[14px] font-semibold">
+                    NGỰC<br class="hidden md:block" />(cm)
+                  </th>
+                  <th class="border border-[#AE8989]/60 px-3 py-3 text-[13px] md:text-[14px] font-semibold">
+                    EO (cm)
+                  </th>
+                  <th class="border border-[#AE8989]/60 px-3 py-3 text-[13px] md:text-[14px] font-semibold">
+                    MÔNG<br class="hidden md:block" />(cm)
+                  </th>
+                  <th class="border border-[#AE8989]/60 px-3 py-3 text-[13px] md:text-[14px] font-semibold">
+                    CÂN NẶNG<br class="hidden md:block" />(kg)
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let r of rows">
+                  <td class="border border-[#AE8989]/60 px-3 py-3 text-[14px] md:text-[15px] font-semibold">
+                    {{ r.size }}
+                  </td>
+                  <td class="border border-[#AE8989]/60 px-3 py-3 text-[14px] md:text-[15px]">
+                    {{ r.bust }}
+                  </td>
+                  <td class="border border-[#AE8989]/60 px-3 py-3 text-[14px] md:text-[15px]">
+                    {{ r.waist }}
+                  </td>
+                  <td class="border border-[#AE8989]/60 px-3 py-3 text-[14px] md:text-[15px]">
+                    {{ r.hip }}
+                  </td>
+                  <td class="border border-[#AE8989]/60 px-3 py-3 text-[14px] md:text-[15px]">
+                    {{ r.weight }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- hint text (optional) -->
+          <p class="mt-4 text-[13px] md:text-[14px] text-[#6b4a4a]/80">
+            * Nếu số đo nằm giữa 2 size, ưu tiên size lớn hơn để mặc thoải mái.
+          </p>
+        </div>
+      </section>
+
+      <!-- RIGHT: Dropdown nav -->
+      <aside class="relative">
+        <button
+          type="button"
+          (click)="toggle()"
+          class="w-full bg-[#F7EBE4] border border-[#AE8989]/60 px-4 py-3 flex items-center justify-between
+                 text-[#6b4a4a] font-semibold"
+          aria-haspopup="true"
+          [attr.aria-expanded]="isOpen"
+        >
+          <span class="text-[13px] md:text-[14px] tracking-wide">CHÍNH SÁCH BÁN HÀNG</span>
+
+          <!-- chevron -->
+          <svg class="w-5 h-5 transition-transform duration-200"
+               [class.rotate-180]="isOpen"
+               viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"></path>
+          </svg>
+        </button>
+
+        <div
+          *ngIf="isOpen"
+          class="absolute z-20 left-0 right-0 bg-[#F7EBE4] border border-t-0 border-[#AE8989]/60"
+        >
+          <a
+            *ngFor="let item of navItems"
+            [routerLink]="item.path"
+            (click)="close()"
+            class="block px-4 py-3 text-[14px] md:text-[15px]
+                   hover:bg-[#AE8989]/10 transition-colors"
+            [class.text-[#AE8989]]="item.active"
+            [class.font-semibold]="item.active"
+          >
+            {{ item.label }}
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

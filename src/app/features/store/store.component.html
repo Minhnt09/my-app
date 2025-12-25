@@ -1,9 +1,70 @@
 <app-navbar></app-navbar>
-<div class="bg-[#F7EBE4] text-center text-[40px] text-[#8A5252] font-[Poppins] font-semibold">
-    LOOKBOOK
+
+<div class="min-h-screen bg-[#F7EBE4]">
+  <!-- ===== HEADER ===== -->
+  <section class="pt-8 md:pt-10 pb-5 md:pb-6">
+    <div class="text-center">
+      <p
+        class="font-semibold tracking-wide text-[#8A5252]
+               text-[26px] md:text-[42px]"
+      >
+        LOOKBOOK
+      </p>
+
+      <div
+        class="mx-auto mt-2 h-[2px]
+               w-24 md:w-40
+               bg-[#8A5252]/60"
+      ></div>
+    </div>
+  </section>
+
+  <!-- ===== GRID CONTENT ===== -->
+  <section class="mx-auto max-w-6xl px-4 pb-12 md:pb-14">
+    <div
+      class="grid grid-cols-1 gap-4
+             sm:grid-cols-2 sm:gap-5
+             lg:grid-cols-3 lg:gap-6"
+    >
+      <a
+        *ngFor="let item of lookbooks"
+        class="block"
+      >
+        <!-- Card -->
+        <div class="rounded-xl">
+          <!-- Image -->
+          <div class="overflow-hidden rounded-xl bg-white/40">
+            <img
+              [src]="item.img"
+              [alt]="item.title"
+              class="w-full object-cover
+                     h-[220px]
+                     sm:h-[260px]
+                     md:h-[300px]
+                     lg:h-[360px]
+                     xl:h-[420px]"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Label -->
+          <div
+            class="mt-3 border border-[#9A8B8B]
+                   bg-[#F7EBE4]
+                   px-3 py-3 text-center"
+          >
+            <p
+              class="text-[13px] sm:text-[14px]
+                     tracking-wide text-[#2d1f1f]"
+            >
+              {{ item.title }}
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
 </div>
-<div class="">
-    <img src="/assets/img/banner-1.png" alt="">
-</div>
+
 <app-highlight-products></app-highlight-products>
 <app-footer></app-footer>

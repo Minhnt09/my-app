@@ -20,4 +20,10 @@ export class FooterComponent {
   goReturnPolicy(){
     this.router.navigate(['/return-policy'])
   }
+  goShippingPolicy(){
+    this.router.navigate(['/shipping-policy'])
+  }
+  goSizeGuide(){
+    this.router.navigate(['/size-guide'])
+  }
 }

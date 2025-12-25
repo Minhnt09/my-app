@@ -5,18 +5,18 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-return-policy',
+  selector: 'app-shipping-policy',
   standalone: true,
   imports: [NavbarComponent, FooterComponent, CommonModule, RouterModule],
-  templateUrl: './return-policy.component.html',
-  styleUrl: './return-policy.component.scss'
+  templateUrl: './shipping-policy.component.html',
+  styleUrl: './shipping-policy.component.scss'
 })
-export class ReturnPolicyComponent {
+export class ShippingPolicyComponent {
   isOpen = false;
 
   navItems = [
-    { label: 'Chính sách vận chuyển', path: '/shipping-policy' },
-    { label: 'Chính sách đổi trả', path: '/return-policy', active: true },
+    { label: 'Chính sách vận chuyển', path: '/shipping-policy', active: true },
+    { label: 'Chính sách đổi trả', path: '/return-policy' },
     { label: 'Hướng dẫn chọn size', path: '/size-guide' },
   ];
 

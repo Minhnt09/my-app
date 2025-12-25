@@ -1,0 +1,109 @@
+<app-navbar></app-navbar>
+
+<div class="bg-[#F7EBE4] py-10">
+  <!-- Title -->
+  <p class="text-center font-semibold text-[#8A5252] text-[48px] max-md:text-[24px]">
+    CHÍNH SÁCH VẬN CHUYỂN
+  </p>
+  <div class="mx-auto h-[2px] w-96 bg-[#8A5252]/60"></div>
+
+  <p class="mt-6 text-center font-medium text-[30px] max-md:text-[18px]">
+    THỜI GIAN GIAO HÀNG
+  </p>
+
+  <!-- Wrapper -->
+  <div class="mx-auto max-w-6xl px-4">
+    <!-- 12 cột: trái lớn, phải bé -->
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-12 md:items-start">
+      <!-- LEFT (main) -->
+      <section class="md:col-span-9">
+        <div class="overflow-hidden rounded-md border border-[#E6A0A0] bg-white">
+          <table class="w-full table-fixed">
+            <thead class="bg-[#F4B7B0]">
+              <tr>
+                <th class="w-[12%] px-4 py-5 text-center font-medium text-[22px] max-md:text-[14px]">
+                  STT
+                </th>
+                <th class="w-[55%] px-4 py-5 text-center font-medium text-[22px] max-md:text-[14px]">
+                  KHU VỰC VẬN CHUYỂN
+                </th>
+                <th class="w-[33%] px-4 py-5 text-center font-medium text-[22px] max-md:text-[14px]">
+                  THỜI GIAN
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr class="border-t border-[#E6A0A0]">
+                <td class="px-4 py-7 text-center text-[20px] max-md:text-[14px]">1</td>
+                <td class="px-4 py-7 text-center text-[20px] max-md:text-[14px]">Nội thành Hà Nội</td>
+                <td class="px-4 py-7 text-center text-[20px] max-md:text-[14px] whitespace-nowrap">
+                  Từ 01 – 03 ngày làm việc
+                </td>
+              </tr>
+
+              <tr class="border-t border-[#E6A0A0]">
+                <td class="px-4 py-7 text-center text-[20px] max-md:text-[14px]">2</td>
+                <td class="px-4 py-7 text-center text-[20px] max-md:text-[14px]">
+                  Ngoại thành &amp; các thành phố lớn
+                </td>
+                <td class="px-4 py-7 text-center text-[20px] max-md:text-[14px] whitespace-nowrap">
+                  Từ 03 – 05 ngày làm việc
+                </td>
+              </tr>
+
+              <tr class="border-t border-[#E6A0A0]">
+                <td class="px-4 py-7 text-center text-[20px] max-md:text-[14px]">3</td>
+                <td class="px-4 py-7 text-center text-[20px] max-md:text-[14px]">Các khu vực khác</td>
+                <td class="px-4 py-7 text-center text-[20px] max-md:text-[14px] whitespace-nowrap">
+                  Từ 04 – 07 ngày làm việc
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- RIGHT (small box) -->
+      <aside class="md:col-span-3 md:sticky md:top-24">
+        <!-- giới hạn độ rộng để nhìn “bé” hơn -->
+        <div class="w-full md:max-w-[280px] md:ml-auto">
+          <div class="rounded-md border border-[#AE8989]/60 bg-[#F7EBE4] overflow-hidden">
+            <button
+              type="button"
+              (click)="toggle()"
+              class="w-full px-4 py-3 flex items-center justify-between
+                     text-[#6b4a4a] font-semibold"
+              aria-haspopup="true"
+              [attr.aria-expanded]="isOpen"
+            >
+              <span class="text-[13px] md:text-[14px] tracking-wide">CHÍNH SÁCH BÁN HÀNG</span>
+
+              <svg class="w-5 h-5 transition-transform duration-200"
+                   [class.rotate-180]="isOpen"
+                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6"></path>
+              </svg>
+            </button>
+
+            <div *ngIf="isOpen" class="border-t border-[#AE8989]/30">
+              <a
+                *ngFor="let item of navItems"
+                [routerLink]="item.path"
+                (click)="close()"
+                class="block px-4 py-3 text-[14px] md:text-[15px]
+                       hover:bg-[#AE8989]/10 transition-colors"
+                [class.text-[#AE8989]]="item.active"
+                [class.font-semibold]="item.active"
+              >
+                {{ item.label }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

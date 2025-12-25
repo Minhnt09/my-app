@@ -15,6 +15,8 @@ import { ShoppingCartComponent } from './features/shopping-cart/shopping-cart.co
 import { ProductDetailComponent } from './features/product-detail/product-detail.component';
 import { ReturnPolicyComponent } from './features/return-policy/return-policy.component';
 import { PaymentSuccessComponent } from './features/payment-success/payment-success.component';
+import { ShippingPolicyComponent } from './features/shipping-policy/shipping-policy.component';
+import { SizeGuideComponent } from './features/size-guide/size-guide.component';
 
 export const routes: Routes = [
   {
@@ -85,6 +87,14 @@ export const routes: Routes = [
   {
     path: 'payment-success',
     component: PaymentSuccessComponent
+  },
+  {
+    path: 'shipping-policy',
+    component: ShippingPolicyComponent
+  },
+  {
+    path: 'size-guide',
+    component: SizeGuideComponent
   }
 
 ];
