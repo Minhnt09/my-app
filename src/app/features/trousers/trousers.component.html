@@ -24,8 +24,8 @@
       <!-- Product grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         <app-product-card
-          *ngFor="let product of products | slice:14:18"
-          [product]="product"
+          *ngFor="let item of product | slice:14:18"
+          [product]="item"
         ></app-product-card>
       </div>
     </div>

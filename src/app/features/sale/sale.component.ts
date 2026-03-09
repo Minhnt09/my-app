@@ -4,8 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { RouterLink, RouterModule } from "@angular/router";
 import { HighlightProductsComponent } from '../../shared/components/highlight-products/highlight-products.component';
-import { listProduct } from '../../shared/constants/list-product.constants';
-import { ProductCardComponent } from '../../shared/components/product-card/product-card.component';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-sale',
@@ -20,11 +19,25 @@ import { ProductCardComponent } from '../../shared/components/product-card/produ
   styleUrl: './sale.component.scss'
 })
 export class SaleComponent {
-  products = listProduct.data.items;
   // Biến toggle cho filter panel
   showColor = false;
   showSize = false;
   showForm = false;
+
+  products: any[] = [];
+
+  constructor(private productService: ProductService) {}
+
+  ngOnInit() {
+    this.productService.getAllProducts().subscribe({
+      next: (data) => {
+        this.products = data;
+      },
+      error: (error) => {
+        console.error('Lỗi khi lấy sản phẩm:', error);
+      }
+    });
+  }
   
   // Toggle các panel
   togglePanel(panel: 'color' | 'size' | 'form') {

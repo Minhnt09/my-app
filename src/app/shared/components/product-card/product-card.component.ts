@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { listProduct } from '../../constants/list-product.constants';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 

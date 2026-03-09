@@ -9,6 +9,7 @@ import { CartservicesService } from '../services/cartservices.service';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { CheckoutService } from '../services/checkout.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -29,15 +30,16 @@ import { CheckoutService } from '../services/checkout.service';
 })
 export class ProductDetailComponent {
   @ViewChild('modalContent') modalContent!: TemplateRef<any>;
+  @Input() countdownDurationInMinutes = 5;
 
   countdown!: number;
   isCountdownEnd = false;
   isShowBack = false;
-
+  
   form!: FormGroup;
   cart: any[] = [];
 
-  @Input() countdownDurationInMinutes = 5;
+  private readonly ORDER_API = 'http://localhost:3000/orders';
 
   constructor(
     private router: Router,
@@ -46,6 +48,7 @@ export class ProductDetailComponent {
     private cartService: CartservicesService,
     private checkoutService: CheckoutService,
     private modalService: NzModalService,
+    private http: HttpClient,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -93,15 +96,21 @@ export class ProductDetailComponent {
   get district() { return this.form.get('district'); }
   get address() { return this.form.get('address'); }
 
-  fakePayment() {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({
-          status: 'success',
-          orderId: Date.now(),
-        });
-      }, 1500);
-    });
+  private buildOrderPayload() {
+    const v = this.form.value;
+
+    return {
+      customer: {
+        name: v.fullName,
+        phone: v.phoneNumber,
+        email: v.email,
+        address: `${v.address}, ${v.district}, ${v.province}`,
+      },
+      items: this.cart.map((item: any) => ({
+        productId: item.id,
+        qty: item.qty ?? 1,
+      })),
+    };
   }
 
   async onSubmit() {
@@ -110,25 +119,26 @@ export class ProductDetailComponent {
       return;
     }
 
-    const result: any = await this.fakePayment();
+    const payload = this.buildOrderPayload();
 
-    if (result.status === 'success') {
-      const orderData = {
-        orderId: result.orderId,
-        cart: this.cart,
-        info: this.form.value,
-        total: this.getTotalPrice() + 20000,
-        createdAt: new Date(),
-      };
 
-      localStorage.setItem('lastOrder', JSON.stringify(orderData));
+    this.http.post(this.ORDER_API, payload).subscribe({
+      next: (res: any) => {
+        console.log('POST /orders response', res);
+        
+        const orderCode = res?.data?.orderCode || res?.data?.orderCode || res?.orderCode;
 
-      this.cartService.clearCart();
+        this.cartService.clearCart();
 
-      this.router.navigate(['/payment-success'], {
-        queryParams: { orderId: result.orderId },
-      });
-    }
+        this.router.navigate(['/payment-success'], {
+          queryParams: { orderCode },
+        });
+      },
+      error: (err) => {
+        console.error('Lỗi khi tạo đơn hàng:', err);
+        // Hiển thị thông báo lỗi cho người dùng nếu cần
+      }
+    });
   }
 
   goBack() {
@@ -166,8 +176,25 @@ export class ProductDetailComponent {
 
   getTotalPrice() {
     return this.cart.reduce(
-      (sum: number, item: any) => sum + item.price,
+      (sum: number, item: any) => sum + item.price * (item.qty ?? 1),
       0
     );
   }
 }
+    // if (result.status === 'success') {
+    //   const orderData = {
+    //     orderId: result.orderId,
+    //     cart: this.cart,
+    //     info: this.form.value,
+    //     total: this.getTotalPrice() + 20000,
+    //     createdAt: new Date(),
+    //   };
+
+    //   localStorage.setItem('lastOrder', JSON.stringify(orderData));
+
+    //   this.cartService.clearCart();
+
+    //   this.router.navigate(['/payment-success'], {
+    //     queryParams: { orderId: result.orderId },
+    //   });
+    // }

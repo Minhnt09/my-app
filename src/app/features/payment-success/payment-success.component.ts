@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-payment-success',
@@ -10,14 +11,29 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
   styleUrl: './payment-success.component.scss'
 })
 export class PaymentSuccessComponent {
-  orderId: string | null = '';
+  order: any = null;
+  orderCode: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private http: HttpClient
   ) {}
 
   ngOnInit() {
-    this.orderId = this.route.snapshot.queryParamMap.get('orderId');
+    this.route.queryParamMap.subscribe(params => {
+      this.orderCode = params.get('orderCode');
+
+      if (!this.orderCode) return;
+
+
+      this.http
+        .get(`http://localhost:3000/orders/${this.orderCode}`)
+        .subscribe({
+          next: (res: any) => {
+            this.order = res.data;
+            console.log('this.order:', this.order);
+          },
+        });
+    });
   }
 }

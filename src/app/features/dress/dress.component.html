@@ -43,8 +43,8 @@
                gap-5 sm:gap-6 lg:gap-10"
       >
         <app-product-card
-          *ngFor="let product of products | slice:6:10"
-          [product]="product"
+          *ngFor="let item of product | slice:6:10"
+          [product]="item"
         >
         </app-product-card>
       </div>
