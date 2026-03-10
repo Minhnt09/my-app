@@ -27,7 +27,7 @@ export class PaymentSuccessComponent {
 
 
       this.http
-        .get(`http://localhost:3000/orders/${this.orderCode}`)
+        .get(`https://my-app-uc3a.onrender.com/orders/${this.orderCode}`)
         .subscribe({
           next: (res: any) => {
             this.order = res.data;

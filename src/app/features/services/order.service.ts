@@ -16,7 +16,7 @@ export type CreateOrderPayload = {
   providedIn: 'root'
 })
 export class OrderService {
-  private baseUrl = 'http://localhost:3000';
+  private baseUrl = 'https://my-app-uc3a.onrender.com';
 
   constructor(private http: HttpClient) { }
 

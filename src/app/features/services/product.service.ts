@@ -17,7 +17,7 @@ export interface Product {
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl = 'http://localhost:3000/products';
+  private baseUrl = 'https://my-app-uc3a.onrender.com/products';
   
   constructor(private http: HttpClient) {}
 

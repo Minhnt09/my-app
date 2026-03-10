@@ -39,7 +39,7 @@ export class ProductDetailComponent {
   form!: FormGroup;
   cart: any[] = [];
 
-  private readonly ORDER_API = 'http://localhost:3000/orders';
+  private readonly ORDER_API = 'https://my-app-uc3a.onrender.com/orders';
 
   constructor(
     private router: Router,
