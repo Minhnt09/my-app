@@ -17,6 +17,7 @@ import { ReturnPolicyComponent } from './features/return-policy/return-policy.co
 import { PaymentSuccessComponent } from './features/payment-success/payment-success.component';
 import { ShippingPolicyComponent } from './features/shipping-policy/shipping-policy.component';
 import { SizeGuideComponent } from './features/size-guide/size-guide.component';
+import { ProductsAdminComponent } from './features/admin/products-admin/products-admin.component';
 
 export const routes: Routes = [
   {
@@ -27,6 +28,10 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'admin/products',
+    component: ProductsAdminComponent
   },
   {
     path: 'sale',
